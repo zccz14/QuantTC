@@ -48,7 +48,6 @@ namespace QuantTC.Indicators.Generic
 
 		/// <inheritdoc />
 		public T this[int index] => Data[index];
-
 		/// <summary>
 		/// Data Container
 		/// </summary>

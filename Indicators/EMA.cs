@@ -1,4 +1,5 @@
-﻿using QuantTC.Indicators.Generic;
+﻿using System;
+using QuantTC.Indicators.Generic;
 
 namespace QuantTC.Indicators
 {
