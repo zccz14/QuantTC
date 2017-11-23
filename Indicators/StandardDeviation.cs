@@ -40,7 +40,7 @@ namespace QuantTC.Indicators
 		{
 			Data.FillRange(Count, Source.Count,
 				i => i > 1
-					? Sqrt(RangeRight(0, i).Take(Period).Select(ii => Source[ii] - Average[i]).Select(x => x * x).Sum() /
+					? Sqrt(RangeRight(0, i + 1).Take(Period).Select(ii => Source[ii] - Average[i]).Select(x => x * x).Sum() /
 					       Min(Period - 1, i - 1))
 					: 0);
 			FollowUp();
