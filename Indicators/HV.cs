@@ -6,12 +6,12 @@ namespace QuantTC.Indicators
 {
 	/// <inheritdoc />
 	/// <summary>
-	/// 波动率: 对数投资回报率的标准差（按周期修正）
+	/// 历史波动率: 对数投资回报率的标准差（按周期修正）
 	/// </summary>
-	public class Volatility : Indicator<double>
+	public class HV : Indicator<double>
 	{
 		/// <inheritdoc />
-		public Volatility(IIndicator<IBarOpenClose> source, int period)
+		public HV(IIndicator<IBarOpenClose> source, int period)
 		{
 			Source = source;
 			Period = period;

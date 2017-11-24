@@ -28,5 +28,6 @@ namespace QuantTC.Indicators.Generic
 		private IIndicator<T1> Source1 { get; }
 		private IIndicator<T2> Source2 { get; }
 		private Func<T1, T2, T3> Operator { get; }
+
 	}
 }

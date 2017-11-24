@@ -16,23 +16,26 @@
 		double Middle { get; }
 
 		/// <summary>
-		/// Width / Middle
-		/// </summary>
-		double Ratio { get; }
-
-		/// <summary>
-		/// Standard Deviation
-		/// </summary>
-		double Std { get; }
-
-		/// <summary>
 		/// Upper Line
 		/// </summary>
 		double Upper { get; }
-
+	}
+	/// <summary>
+	/// Extension for IBoll Datum
+	/// </summary>
+	public static class BollX
+	{
 		/// <summary>
-		/// Upper - Lower
+		/// Width = Upper - Lower
 		/// </summary>
-		double Width { get; }
+		/// <param name="datum">IBoll Datum</param>
+		/// <returns>Width</returns>
+		public static double Width(this IBoll datum) => datum.Upper - datum.Lower;
+		/// <summary>
+		/// Ratio = Width / Middle
+		/// </summary>
+		/// <param name="datum">IBoll Datum</param>
+		/// <returns>Ratio</returns>
+		public static double Ratio(this IBoll datum) => datum.Width() / datum.Middle;
 	}
 }

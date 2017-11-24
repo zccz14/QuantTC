@@ -113,5 +113,11 @@ namespace QuantTC
 		/// <param name="u">Upper Bound</param>
 		/// <returns></returns>
 		public static bool IsBetween(this double v, double l, double u) => l <= v && v <= u;
+		/// <summary>
+		/// Used in Indicators' Count Sync
+		/// </summary>
+		/// <param name="ints">Indicators' count</param>
+		/// <returns>minimum count</returns>
+		public static int Min(params int[] ints) => ints.Min();
 	}
 }

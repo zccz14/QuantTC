@@ -1,12 +1,15 @@
-﻿using QuantTC.Indicators.Generic;
+﻿using System;
+using QuantTC.Data;
+using QuantTC.Indicators.Generic;
 
 namespace QuantTC.Indicators
 {
+	/// <inheritdoc />
 	/// <summary>
 	/// Moving Average Convergence / Divergence
 	/// </summary>
 	/// <remarks>Composite Indicator</remarks>
-	public class MACD
+	public class MACD: Indicator<IMacd>
 	{
 		/// <summary>
 		/// Construct a MACD, recommand (12, 26, 9)
@@ -27,6 +30,25 @@ namespace QuantTC.Indicators
 			Diff = new BinaryOperation<double, double, double>(Fast, Slow, (f, s) => f - s){Title = Title + ".DIFF"};
 			Dea = new EMA(Diff, DiffPeriod) {Title = Title + ".DEA"};
 			Macd = new BinaryOperation<double, double, double>(Diff, Dea, (f, s) => 2 * (f - s)) {Title = Title + ".MACD"};
+			Diff.Update += Main;
+			Dea.Update += Main;
+			Macd.Update += Main;
+		}
+
+		private void Main()
+		{
+			Data.FillRange(Count, Functions.Min(Diff.Count, Dea.Count, Macd.Count),
+				i => new Datum {Diff = Diff[i], Dea = Dea[i], Macd = Macd[i]});
+		}
+
+		/// <summary>
+		/// Internal Macd Datum Implementation
+		/// </summary>
+		private class Datum : IMacd
+		{
+			public double Diff { get; set; }
+			public double Dea { get; set; }
+			public double Macd { get; set; }
 		}
 
 		/// <summary>
