@@ -83,8 +83,25 @@ namespace QuantTC.Data
     public static class IBarX {
         public static bool IsBullish(this IBarOpenClose bar) => bar.Close > bar.Open;
         public static bool IsBearish(this IBarOpenClose bar) => bar.Close < bar.Open;
+		/// <summary>
+		/// the Top of Real Body
+		/// </summary>
+		/// <param name="bar">candlestick</param>
+		/// <returns></returns>
+	    public static double Top(this IBarOpenClose bar) => Math.Max(bar.Close, bar.Open);
+		/// <summary>
+		/// the Bottom of Real Body
+		/// </summary>
+		/// <param name="bar">candlestick</param>
+		/// <returns></returns>
+	    public static double Bottom(this IBarOpenClose bar) => Math.Min(bar.Close, bar.Open);
+		/// <summary>
+		/// the Length of Real Body
+		/// </summary>
+		/// <param name="bar">candlestick</param>
+		/// <returns></returns>
         public static double RealBody(this IBarOpenClose bar) => Math.Abs(bar.Close - bar.Open);
-        public static double UpperShadow(this IBarOHC bar) => bar.High - Math.Max(bar.Open, bar.Close);
-        public static double LowerShadow(this IBarOLC bar) => Math.Min(bar.Open, bar.Close) - bar.Low;
+        public static double UpperShadow(this IBarOHC bar) => bar.High - bar.Top();
+        public static double LowerShadow(this IBarOLC bar) => bar.Bottom() - bar.Low;
     }
 }
