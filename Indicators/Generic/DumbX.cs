@@ -37,5 +37,7 @@ namespace QuantTC.Indicators.Generic
 				d.Refresh();
 			});
 		}
+
+		public static Simulator Simulator(this Dumb<IBar> d) => new Simulator(d);
 	}
 }
