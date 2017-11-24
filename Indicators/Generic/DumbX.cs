@@ -13,6 +13,29 @@ namespace QuantTC.Indicators.Generic
 			source.ForEach(t => ret.Add(t));
 			return ret;
 		}
-        public static void LoadCsv(this Dumb<IBar> d, string path, bool header = true) => d.AddRange(File.ReadAllLines(path).Skip(header ? 1 : 0).Select(Bar.FromString));
-    }
+
+		/// <summary>
+		/// Loading CSV without Refresh
+		/// </summary>
+		/// <param name="d"></param>
+		/// <param name="path"></param>
+		/// <param name="header"></param>
+		public static void LoadCsv(this Dumb<IBar> d, string path, bool header = true) =>
+			d.AddRange(File.ReadAllLines(path).Skip(header ? 1 : 0).Select(Bar.FromString));
+
+		/// <summary>
+		/// Live Loading CSV with Refresh
+		/// </summary>
+		/// <param name="d"></param>
+		/// <param name="path"></param>
+		/// <param name="header"></param>
+		public static void LiveLoadCsv(this Dumb<IBar> d, string path, bool header = true)
+		{
+			File.ReadAllLines(path).Skip(header? 1: 0).Select(Bar.FromString).ForEach(bar =>
+			{
+				d.Add(bar);
+				d.Refresh();
+			});
+		}
+	}
 }
