@@ -36,8 +36,8 @@ namespace QuantTC.Indicators
 	    {
 		    Functions.Range(Count, Source.Count).ForEach(i =>
 		    {
-			    Update?.Invoke();
 			    Count = i + 1;
+			    Update?.Invoke();
 		    });
 	    }
     }
