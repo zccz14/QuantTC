@@ -53,43 +53,18 @@ namespace QuantTC.Indicators.Collectors
 				IsEnabled = false;
 				FollowUp();
 			}
-			if (TargetPosition != Position)
+			// Close
+			if (Model.LastOrDefault() != Position)
 			{
+				TargetPosition = Model.LastOrDefault();
 				IsEnabled = true; // yield 
 			}
-//			if (TargetPosition != Position)
-//			{
-//				// Trade
-//				if (TargetPosition > Position)
-//				{
-//					Data.Add(new Datum
-//					{
-//						DateTime = Market.Last().DateTime,
-//						Lots = TargetPosition - Position,
-//						Price = Market.Last().Close,
-//						Direction = OrderDirection.Buy
-//					});
-//				}
-//				else
-//				{
-//					Data.Add(new Datum
-//					{
-//						DateTime = Market.Last().DateTime,
-//						Lots = Position - TargetPosition,
-//						Price = Market.Last().Close,
-//						Direction = OrderDirection.Sell
-//					});
-//				}
-//				Position = TargetPosition;
-//				IsEnabled = false;
-//				FollowUp();
-//			}
 		}
 
 		/// <summary>
 		/// Target Position: The last position that the model indicated
 		/// </summary>
-		public int TargetPosition => Model.LastOrDefault();
+		public int TargetPosition { get; private set; }
 		/// <summary>
 		/// Current Position: The Order Agent has ordered
 		/// </summary>
