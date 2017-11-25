@@ -26,18 +26,66 @@ namespace QuantTC.Indicators.Collectors
 
 		private void OnMarket()
 		{
-			if (TargetPosition == Position) return;
-			if (TargetPosition > Position)
+			if (IsEnabled)
 			{
-				Data.Add(new Datum{DateTime = Market.Last().DateTime, Lots = TargetPosition - Position, Price = Market.Last().Open, Direction = OrderDirection.Buy});
+				// Trade
+				if (TargetPosition > Position)
+				{
+					Data.Add(new Datum
+					{
+						DateTime = Market.Last().DateTime,
+						Lots = TargetPosition - Position,
+						Price = Market.Last().Open,
+						Direction = OrderDirection.Buy
+					});
+				}
+				else
+				{
+					Data.Add(new Datum
+					{
+						DateTime = Market.Last().DateTime,
+						Lots = Position - TargetPosition,
+						Price = Market.Last().Open,
+						Direction = OrderDirection.Sell
+					});
+				}
+				Position = TargetPosition;
+				IsEnabled = false;
+				FollowUp();
 			}
-			else
+			if (TargetPosition != Position)
 			{
-				Data.Add(new Datum { DateTime = Market.Last().DateTime, Lots = Position - TargetPosition, Price = Market.Last().Open, Direction = OrderDirection.Sell});
+				IsEnabled = true; // yield 
 			}
-			Position = TargetPosition;
-			FollowUp();
+//			if (TargetPosition != Position)
+//			{
+//				// Trade
+//				if (TargetPosition > Position)
+//				{
+//					Data.Add(new Datum
+//					{
+//						DateTime = Market.Last().DateTime,
+//						Lots = TargetPosition - Position,
+//						Price = Market.Last().Close,
+//						Direction = OrderDirection.Buy
+//					});
+//				}
+//				else
+//				{
+//					Data.Add(new Datum
+//					{
+//						DateTime = Market.Last().DateTime,
+//						Lots = Position - TargetPosition,
+//						Price = Market.Last().Close,
+//						Direction = OrderDirection.Sell
+//					});
+//				}
+//				Position = TargetPosition;
+//				IsEnabled = false;
+//				FollowUp();
+//			}
 		}
+
 		/// <summary>
 		/// Target Position: The last position that the model indicated
 		/// </summary>
@@ -46,6 +94,8 @@ namespace QuantTC.Indicators.Collectors
 		/// Current Position: The Order Agent has ordered
 		/// </summary>
 		public int Position { get; private set; }
+
+		public bool IsEnabled { get; private set; }
 
 		private IIndicator<IBar> Market { get; }
 		private IIndicator<int> Model { get; }
