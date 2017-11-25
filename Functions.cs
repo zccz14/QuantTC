@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 
 namespace QuantTC
@@ -87,10 +86,21 @@ namespace QuantTC
 			subject >= 0 && @object >= 0 || subject < 0 && @object < 0;
 
 		/// <summary>
+		/// Judge if a value is same signed with another
+		/// </summary>
+		public static bool IsSameSigned(this int subject, int @object) =>
+			subject > 0 && @object > 0 || subject < 0 && @object < 0 || subject == 0 && @object == 0;
+
+		/// <summary>
 		/// Judge if a value is different signed with another
 		/// </summary>
 		public static bool IsDiffSigned(this double subject, double @object) =>
 			subject >= 0 && @object < 0 || subject < 0 && @object >= 0;
+
+		/// <summary>
+		/// Judge if a value is different signed with another
+		/// </summary>
+		public static bool IsDiffSigned(this int subject, int @object) => !subject.IsSameSigned(@object);
 
 		/// <summary>
 		/// Action To Func
@@ -104,6 +114,7 @@ namespace QuantTC
 		};
 		public static Tuple<T1, T2> VT<T1, T2>(T1 t1, T2 t2) => Tuple.Create(t1, t2);
 
+		public static int Abs(this int v) => Math.Abs(v);
 		public static double Abs(this double v) => Math.Abs(v);
 		/// <summary>
 		/// Judge if a value is between l and u : [l, u]
