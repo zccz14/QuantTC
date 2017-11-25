@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using QuantTC.Data;
+﻿using QuantTC.Data;
 using QuantTC.Indicators.Generic;
 
 namespace QuantTC.Indicators.Collectors
