@@ -11,7 +11,7 @@ namespace QuantTC.Indicators
     public class Simulator: IIndicator<IBar>
     {
 	    /// <inheritdoc />
-	    public Simulator(Dumb<IBar> source)
+	    public Simulator(IIndicator<IBar> source)
 	    {
 		    Source = source;
 		    Source.Update += Resume;
@@ -30,7 +30,7 @@ namespace QuantTC.Indicators
 	    /// <inheritdoc />
 	    public IBar this[int index] => Source[index];
 
-	    private Dumb<IBar> Source { get; }
+	    private IIndicator<IBar> Source { get; }
 
 		/// <summary>
 		/// Replay Source
