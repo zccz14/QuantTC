@@ -19,6 +19,7 @@ namespace QuantTC.Indicators.Collectors
 		private void NetValueOnUpdate()
 		{
 			Data.FillRange(Count, NetValue.Count, i => (double) WinningCounter[i] / OperationCounter[i]);
+			FollowUp();
 		}
 
 		private IIndicator<double> NetValue { get; }
@@ -100,6 +101,7 @@ namespace QuantTC.Indicators.Collectors
 					return Cash[i] + NetPosition[i] * Orders[i].Price;
 				}
 			});
+			FollowUp();
 		}
 
 		private IIndicator<IOrder> Orders { get; }
