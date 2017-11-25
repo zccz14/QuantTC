@@ -80,10 +80,16 @@ namespace QuantTC
 		/// <param name="elementFunc">For each index, returning an instance of type T</param>
 		public static void FillRange<T>(this List<T> source, int left, int right, Func<int, T> elementFunc)
 		{
-			source.AddRange(Enumerable.Repeat(default(T), right - source.Count));
 			Range(left, right).ForEach(i =>
 			{
-				source[i] = elementFunc(i);
+				if (i < source.Count)
+				{
+					source[i] = elementFunc(i);
+				}
+				else
+				{
+					source.Add(elementFunc(i));
+				}
 			});
 		}
 
