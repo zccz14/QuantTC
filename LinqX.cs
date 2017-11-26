@@ -93,5 +93,17 @@ namespace QuantTC
 			});
 		}
 
+		public static int MaxWith(this int This, int value) => Math.Max(This, value);
+		public static int MinWith(this int This, int value) => Math.Min(This, value);
+		public static int RoundTo(this int value, int left, int right) => value.MaxWith(left).MinWith(right);
+
+		/// <summary>
+		/// Get the countdown from the N-th element
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="This"></param>
+		/// <param name="n">(0, This.Count]</param>
+		/// <returns>This[This.Count - n]</returns>
+		public static T Countdown<T>(this IReadOnlyList<T> This, int n) => This[This.Count - n];
 	}
 }
