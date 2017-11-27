@@ -27,6 +27,11 @@ namespace QuantTC.Indicators
 	    /// <inheritdoc />
 	    public int Count { get; private set; }
 
+		/// <summary>
+		/// The Last (Current) Index = Count - 1
+		/// </summary>
+	    public int Index => Count - 1;
+
 	    /// <inheritdoc />
 	    public IBar this[int index] => Source[index];
 
