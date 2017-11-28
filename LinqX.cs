@@ -41,6 +41,14 @@ namespace QuantTC
 		public static T Last<T>(this IReadOnlyList<T> source) => source[source.Count - 1];
 
 		/// <summary>
+		/// IReadOnlyList's LastOrDefault (Performance Optimized)
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="source"></param>
+		/// <returns></returns>
+		public static T LastOrDefault<T>(this IReadOnlyList<T> source) => source.Count > 0? source[source.Count - 1]: default(T);
+
+		/// <summary>
 		/// Filter with counter
 		/// </summary>
 		public static IEnumerable<Tuple<T, int>> KVWhere<T>(this IEnumerable<T> source, Func<Tuple<T, int>, bool> predicate) =>
@@ -71,7 +79,7 @@ namespace QuantTC
 		/// <summary>
 		/// Left-end range [0, source.Count)
 		/// </summary>
-		public static IEnumerable<int> FromLeftEnd<T>(this IReadOnlyList<T> source) => Range(0, source.Count);
+		public static IEnumerable<int> FromLeftEnd<T>(this IReadOnlyList<T> source) => Functions.Range(0, source.Count);
 
 		/// <summary>
 		/// Right-end range [0, source.Count)
@@ -88,7 +96,7 @@ namespace QuantTC
 		/// <param name="elementFunc">For each index, returning an instance of type T</param>
 		public static void FillRange<T>(this List<T> source, int left, int right, Func<int, T> elementFunc)
 		{
-			Range(left, right).ForEach(i =>
+			Functions.Range(left, right).ForEach(i =>
 			{
 				if (i < source.Count)
 				{
