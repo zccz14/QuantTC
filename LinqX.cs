@@ -33,6 +33,14 @@ namespace QuantTC
 		}
 
 		/// <summary>
+		/// IReadOnlyList's Last (Performance Optimized)
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="source"></param>
+		/// <returns></returns>
+		public static T Last<T>(this IReadOnlyList<T> source) => source[source.Count - 1];
+
+		/// <summary>
 		/// Filter with counter
 		/// </summary>
 		public static IEnumerable<Tuple<T, int>> KVWhere<T>(this IEnumerable<T> source, Func<Tuple<T, int>, bool> predicate) =>

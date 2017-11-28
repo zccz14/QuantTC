@@ -16,17 +16,20 @@ namespace QuantTC.Indicators
 
 		private void Source_Update()
 		{
-			Data.FillRange(Count, Source.Count / Period, i => new Bar
+			for (var i = Count; i < Source.Count / Period; i++)
 			{
-				DateTime = Source[i * Period].DateTime,
-				Open = Source[i * Period].Open,
-				High = Range(i * Period, (i + 1) * Period).Max(ii => Source[ii].High),
-				Low = Range(i * Period, (i + 1) * Period).Min(ii => Source[ii].Low),
-				Close = Source[(i + 1) * Period - 1].Close,
-				Volume = Range(i * Period, (i + 1) * Period).Sum(ii => Source[ii].Volume),
-				OpenInterest = Source[(i + 1) * Period - 1].OpenInterest
-			});
-			FollowUp();
+				Data.Add(new Bar
+				{
+					DateTime = Source[i * Period].DateTime,
+					Open = Source[i * Period].Open,
+					High = Range(i * Period, (i + 1) * Period).Max(ii => Source[ii].High),
+					Low = Range(i * Period, (i + 1) * Period).Min(ii => Source[ii].Low),
+					Close = Source[(i + 1) * Period - 1].Close,
+					Volume = Range(i * Period, (i + 1) * Period).Sum(ii => Source[ii].Volume),
+					OpenInterest = Source[(i + 1) * Period - 1].OpenInterest
+				});
+				FollowUp();
+			}
 		}
 
 		private IIndicator<IBar> Source { get; }
