@@ -37,5 +37,20 @@
 		/// <param name="datum">IBoll Datum</param>
 		/// <returns>Ratio</returns>
 		public static double Ratio(this IBoll datum) => datum.Width() / datum.Middle;
+        /// <summary>
+        /// Std: Width / (4 * Deviation)
+        /// </summary>
+        /// <param name="datum"></param>
+        /// <param name="deviation">default set to 2</param>
+        /// <returns></returns>
+	    public static double Std(this IBoll datum, double deviation = 2) => datum.Width() / 4 / deviation;
+        /// <summary>
+        /// Mid + x * Std
+        /// </summary>
+        /// <param name="datum"></param>
+        /// <param name="x"></param>
+        /// <param name="deviation"></param>
+        /// <returns></returns>
+	    public static double MidDevStd(this IBoll datum, double x, double deviation = 2) => datum.Middle + x * datum.Std(deviation);
 	}
 }
