@@ -14,6 +14,6 @@ namespace QuantTC.Indicators
 		public static MACD MACD(this IIndicator<double> source, int fastPeriod, int slowPeriod, int diffPeriod) => new MACD(source, fastPeriod, slowPeriod, diffPeriod);
 		public static StandardDeviation StdDev(this IIndicator<double> source, int period) => new StandardDeviation(source, period);
 		public static StandardDeviation StdDev(this IIndicator<double> source, int period, IIndicator<double> average) => new StandardDeviation(source, average, period);
-		public static CompositedBar Composite(this IIndicator<IBar> source, int period) => new CompositedBar(source, period);
+		public static CompositedBar Composite(this IIndicator<IPrice> source, int period) => new CompositedBar(source, period);
     }
 }

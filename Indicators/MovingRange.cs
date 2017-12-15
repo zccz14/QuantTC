@@ -14,7 +14,7 @@ namespace QuantTC.Indicators
     public class MovingRange: Indicator<double>
     {
         /// <inheritdoc />
-        public MovingRange(IIndicator<IBarHighLow> source, int period)
+        public MovingRange(IIndicator<IPriceHL> source, int period)
         {
             Source = source;
             Period = period;
@@ -29,7 +29,7 @@ namespace QuantTC.Indicators
             FollowUp();
         }
 
-        private IIndicator<IBarHighLow> Source { get; }
+        private IIndicator<IPriceHL> Source { get; }
         private int Period { get; }
     }
 }

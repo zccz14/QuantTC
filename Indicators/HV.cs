@@ -11,7 +11,7 @@ namespace QuantTC.Indicators
 	public class HV : Indicator<double>
 	{
 		/// <inheritdoc />
-		public HV(IIndicator<IBarOpenClose> source, int period)
+		public HV(IIndicator<IPriceOC> source, int period)
 		{
 			Source = source;
 			Period = period;
@@ -26,7 +26,7 @@ namespace QuantTC.Indicators
 			FollowUp();
 		}
 
-		private IIndicator<IBarOpenClose> Source { get; }
+		private IIndicator<IPriceOC> Source { get; }
 		private IIndicator<double> LogROI { get; }
 		private IIndicator<double> LogROIStd { get; }
 		/// <summary>

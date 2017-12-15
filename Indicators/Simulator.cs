@@ -8,10 +8,10 @@ using QuantTC.Indicators.Generic;
 namespace QuantTC.Indicators
 {
 	/// <inheritdoc />
-    public class Simulator: IIndicator<IBar>
+    public class Simulator: IIndicator<IPrice>
     {
 	    /// <inheritdoc />
-	    public Simulator(IIndicator<IBar> source)
+	    public Simulator(IIndicator<IPrice> source)
 	    {
 		    Source = source;
 		    Source.Update += Resume;
@@ -19,7 +19,7 @@ namespace QuantTC.Indicators
 		/// <inheritdoc />
 	    public event Action Update;
 	    /// <inheritdoc />
-	    public IEnumerator<IBar> GetEnumerator() => Source.Take(Count).GetEnumerator();
+	    public IEnumerator<IPrice> GetEnumerator() => Source.Take(Count).GetEnumerator();
 
 	    /// <inheritdoc />
 	    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
@@ -33,9 +33,9 @@ namespace QuantTC.Indicators
 	    public int Index => Count - 1;
 
 	    /// <inheritdoc />
-	    public IBar this[int index] => Source[index];
+	    public IPrice this[int index] => Source[index];
 
-	    private IIndicator<IBar> Source { get; }
+	    private IIndicator<IPrice> Source { get; }
 
 		/// <summary>
 		/// Replay Source

@@ -11,7 +11,7 @@ namespace QuantTC.Indicators
 	public class LogROI : Indicator<double>
 	{
 		/// <inheritdoc />
-		public LogROI(IIndicator<IBarOpenClose> source)
+		public LogROI(IIndicator<IPriceOC> source)
 		{
 			Source = source;
 			Source.Update += Source_Update;
@@ -23,6 +23,6 @@ namespace QuantTC.Indicators
 			FollowUp();
 		}
 
-		private IIndicator<IBarOpenClose> Source { get; }
+		private IIndicator<IPriceOC> Source { get; }
 	}
 }

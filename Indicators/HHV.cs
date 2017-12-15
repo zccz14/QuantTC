@@ -14,7 +14,7 @@ namespace QuantTC.Indicators
     public class HHV: Indicator<double>
     {
         /// <inheritdoc />
-        public HHV(IIndicator<IBarHigh> high, int period)
+        public HHV(IIndicator<IPriceH> high, int period)
         {
             High = high;
             Period = period;
@@ -27,7 +27,7 @@ namespace QuantTC.Indicators
             FollowUp();
         }
 
-        private IIndicator<IBarHigh> High { get; }
+        private IIndicator<IPriceH> High { get; }
         private int Period { get; }
     }
 }

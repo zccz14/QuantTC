@@ -11,7 +11,7 @@ namespace QuantTC.Indicators
     public class LLV : Indicator<double>
     {
         /// <inheritdoc />
-        public LLV(IIndicator<IBarLow> low, int period)
+        public LLV(IIndicator<IPriceL> low, int period)
         {
             Low = low;
             Period = period;
@@ -24,7 +24,7 @@ namespace QuantTC.Indicators
             FollowUp();
         }
 
-        private IIndicator<IBarLow> Low { get; }
+        private IIndicator<IPriceL> Low { get; }
         private int Period { get; }
     }
 }

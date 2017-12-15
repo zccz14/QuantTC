@@ -5,9 +5,9 @@ using static QuantTC.Functions;
 
 namespace QuantTC.Indicators
 {
-	public class CompositedBar : Indicator<IBar>
+	public class CompositedBar : Indicator<IPrice>
 	{
-		public CompositedBar(IIndicator<IBar> source, int period)
+		public CompositedBar(IIndicator<IPrice> source, int period)
 		{
 			Source = source;
 			Period = period;
@@ -18,7 +18,7 @@ namespace QuantTC.Indicators
 		{
 			for (var i = Count; i < Source.Count / Period; i++)
 			{
-				Data.Add(new Bar
+				Data.Add(new Price
 				{
 					DateTime = Source[i * Period].DateTime,
 					Open = Source[i * Period].Open,
@@ -32,7 +32,7 @@ namespace QuantTC.Indicators
 			}
 		}
 
-		private IIndicator<IBar> Source { get; }
+		private IIndicator<IPrice> Source { get; }
 		public int Period { get; }
 	}
 }

@@ -9,7 +9,7 @@ namespace QuantTC.Indicators.Collectors
 	public class OrderAgent : Indicator<IOrder>
 	{
 		/// <inheritdoc />
-		public OrderAgent(IIndicator<IBar> market, IIndicator<int> model)
+		public OrderAgent(IIndicator<IPrice> market, IIndicator<int> model)
 		{
 			Market = market;
 			Model = model;
@@ -72,7 +72,7 @@ namespace QuantTC.Indicators.Collectors
 
 		public bool IsEnabled { get; private set; }
 
-		private IIndicator<IBar> Market { get; }
+		private IIndicator<IPrice> Market { get; }
 		private IIndicator<int> Model { get; }
 	}
 }

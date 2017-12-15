@@ -20,8 +20,8 @@ namespace QuantTC.Indicators.Generic
 		/// <param name="d"></param>
 		/// <param name="path"></param>
 		/// <param name="header"></param>
-		public static void LoadCsv(this Dumb<IBar> d, string path, bool header = true) =>
-			d.AddRange(File.ReadAllLines(path).Skip(header ? 1 : 0).Select(Bar.FromString));
+		public static void LoadCsv(this Dumb<IPrice> d, string path, bool header = true) =>
+			d.AddRange(File.ReadAllLines(path).Skip(header ? 1 : 0).Select(Price.FromString));
 
 		/// <summary>
 		/// Live Loading CSV with Refresh
@@ -29,15 +29,15 @@ namespace QuantTC.Indicators.Generic
 		/// <param name="d"></param>
 		/// <param name="path"></param>
 		/// <param name="header"></param>
-		public static void LiveLoadCsv(this Dumb<IBar> d, string path, bool header = true)
+		public static void LiveLoadCsv(this Dumb<IPrice> d, string path, bool header = true)
 		{
-			File.ReadAllLines(path).Skip(header? 1: 0).Select(Bar.FromString).ForEach(bar =>
+			File.ReadAllLines(path).Skip(header? 1: 0).Select(Price.FromString).ForEach(bar =>
 			{
 				d.Add(bar);
 				d.Refresh();
 			});
 		}
 
-		public static Simulator Simulator(this IIndicator<IBar> d) => new Simulator(d);
+		public static Simulator Simulator(this IIndicator<IPrice> d) => new Simulator(d);
 	}
 }

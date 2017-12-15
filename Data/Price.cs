@@ -2,8 +2,8 @@
 
 namespace QuantTC.Data
 {
-	/// <inheritdoc cref="IBar"/>
-	public class Bar : IBar
+	/// <inheritdoc cref="IPrice"/>
+	public class Price : IPrice
 	{
 		///	<inheritdoc />
 		public DateTime DateTime { get; set; }
@@ -27,10 +27,10 @@ namespace QuantTC.Data
 		public int OpenInterest { get; set; }
 
 		/// <summary>
-		/// Construct a bar instance from string array
+		/// Construct a price instance from string array
 		/// </summary>
 		/// <param name="data">[Datetime, Open, High, Low, Close, Volume, OpenInterest]</param>
-		public static Bar FromStringArray(string[] data) => new Bar
+		public static Price FromStringArray(string[] data) => new Price
 		{
 			DateTime = DateTime.Parse(data[0]),
 			Open = double.Parse(data[1]),
@@ -42,9 +42,9 @@ namespace QuantTC.Data
 		};
 
 		/// <summary>
-		/// Construct a bar instance from a formatted string
+		/// Construct a price instance from a formatted string
 		/// </summary>
 		/// <param name="data">{Datetime},{Open},{High},{Low},{Close},{Volume},{OpenInterest}</param>
-		public static Bar FromString(string data) => FromStringArray(data.Split(','));
+		public static Price FromString(string data) => FromStringArray(data.Split(','));
 	}
 }
