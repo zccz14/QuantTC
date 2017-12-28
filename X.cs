@@ -16,9 +16,9 @@ namespace QuantTC
         public static Tuple<T, T> NearPairAt<T>(this IReadOnlyList<T> source, int index) =>
             Tuple.Create(source[index - 1], source[index]);
 
-        public static IEnumerable<int> ToRange(this Tuple<int, int> range) => Functions.Range(range.Item1, range.Item2);
+        public static IEnumerable<int> ToRange(this Tuple<int, int> range) => Range(range.Item1, range.Item2);
 
         public static IEnumerable<int> ToRangeRight(this Tuple<int, int> range) =>
-            Functions.RangeRight(range.Item1, range.Item2);
+            RangeRight(range.Item1, range.Item2);
     }
 }

@@ -14,7 +14,7 @@ namespace QuantTC.Indicators.Generic
 		event Action Update;
 	}
 
-	/// <inheritdoc cref="IIndicator" />
+    /// <inheritdoc cref="IIndicator" />
 	/// <inheritdoc cref="IReadOnlyList{T}" />
 	/// <summary>
 	/// IIndicator as a IReadOnlyList&lt;T&gt;

@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using QuantTC.Indicators.Generic;
 using static System.Math;
-using static QuantTC.Functions;
+using static QuantTC.X;
 
 namespace QuantTC.Indicators
 {

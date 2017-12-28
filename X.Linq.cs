@@ -4,9 +4,7 @@ using System.Linq;
 
 namespace QuantTC
 {
-	using static Functions;
-
-	public static class LinqX
+	public static partial class X
 	{
 		/// <summary>
 		/// An alias of foreach
@@ -79,7 +77,7 @@ namespace QuantTC
 		/// <summary>
 		/// Left-end range [0, source.Count)
 		/// </summary>
-		public static IEnumerable<int> FromLeftEnd<T>(this IReadOnlyList<T> source) => Functions.Range(0, source.Count);
+		public static IEnumerable<int> FromLeftEnd<T>(this IReadOnlyList<T> source) => Range(0, source.Count);
 
 		/// <summary>
 		/// Right-end range [0, source.Count)
@@ -96,7 +94,7 @@ namespace QuantTC
 		/// <param name="elementFunc">For each index, returning an instance of type T</param>
 		public static void FillRange<T>(this List<T> source, int left, int right, Func<int, T> elementFunc)
 		{
-			Functions.Range(left, right).ForEach(i =>
+			Range(left, right).ForEach(i =>
 			{
 				if (i < source.Count)
 				{

@@ -1,6 +1,7 @@
 ﻿using System;
 using QuantTC.Data;
 using QuantTC.Indicators.Generic;
+using static QuantTC.X;
 
 namespace QuantTC.Indicators
 {
@@ -37,7 +38,7 @@ namespace QuantTC.Indicators
 
 		private void Main()
 		{
-			Data.FillRange(Count, Functions.Min(Diff.Count, Dea.Count, Macd.Count),
+			Data.FillRange(Count, Min(Diff.Count, Dea.Count, Macd.Count),
 				i => new Datum {Diff = Diff[i], Dea = Dea[i], Macd = Macd[i]});
 			FollowUp();
 		}

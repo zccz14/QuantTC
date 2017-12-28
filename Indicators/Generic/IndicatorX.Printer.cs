@@ -6,14 +6,14 @@ namespace QuantTC.Indicators.Generic
 {
 	public static partial class IndicatorX
 	{
-		public static void Print(this Indicator root)
+		public static void Print(this ITreeView root)
 		{
 			var remain = new List<int> {1};
-			var id = new Dictionary<Indicator, int>();
+			var id = new Dictionary<ITreeView, int>();
 			print(root, 0, remain, id);
 		}
 
-		private static void print(this Indicator node, int tabs, List<int> remains, Dictionary<Indicator, int> id)
+		private static void print(this ITreeView node, int tabs, IList<int> remains, IDictionary<ITreeView, int> id)
 		{
 			if (id.ContainsKey(node) == false)
 			{
@@ -23,14 +23,15 @@ namespace QuantTC.Indicators.Generic
 			Console.Write($" +--[{id[node]}]");
 			Console.WriteLine(node);
 			remains[tabs]--;
-			var nexts = node.FollowingIndicators().Count();
+		    var nextTreeViews = node.GetNexts().ToArray();
+		    var nexts = nextTreeViews.Count();
 			if (tabs + 1 < remains.Count)
 				remains[tabs + 1] = nexts;
 			else
 			{
 				remains.Add(nexts);
 			}
-			node.FollowingIndicators().ForEach(f => f.print(tabs + 1, remains, id));
+			nextTreeViews.ForEach(f => f.print(tabs + 1, remains, id));
 		}
 	}
 }

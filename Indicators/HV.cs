@@ -22,7 +22,7 @@ namespace QuantTC.Indicators
 
 		private void Source_Update()
 		{
-			Data.FillRange(Count, Source.Count / Period, i => LogROIStd[(i + 1) * Period - 1] * Math.Sqrt(Period));
+            Data.FillRange(Count, Source.Count / Period, i => LogROIStd[(i + 1) * Period - 1] * Math.Sqrt(Period));
 			FollowUp();
 		}
 

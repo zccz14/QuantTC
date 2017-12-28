@@ -31,7 +31,7 @@ namespace QuantTC.Indicators
 
 		private void Main()
 		{
-			Data.FillRange(Count, Functions.Min(Lower.Count, Middle.Count, Upper.Count),
+			Data.FillRange(Count, X.Min(Lower.Count, Middle.Count, Upper.Count),
 				i => new Datum {Lower = Lower[i], Middle = Middle[i], Upper = Upper[i]});
 			FollowUp();
 		}

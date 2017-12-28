@@ -8,7 +8,7 @@ using QuantTC.Indicators.Generic;
 namespace QuantTC.Indicators
 {
 	/// <inheritdoc />
-    public class Simulator: IIndicator<IPrice>
+    public class Simulator: IIndicator<IPrice>, ITreeView
     {
 	    /// <inheritdoc />
 	    public Simulator(IIndicator<IPrice> source)
@@ -50,11 +50,18 @@ namespace QuantTC.Indicators
 		/// </summary>
 	    public void Resume()
 	    {
-		    Functions.Range(Count, Source.Count).ForEach(i =>
+		    X.Range(Count, Source.Count).ForEach(i =>
 		    {
 			    Count = i + 1;
 			    Update?.Invoke();
 		    });
 	    }
+
+        /// <inheritdoc />
+        public string Title { get; set; }
+
+        /// <inheritdoc />
+        public IEnumerable<ITreeView> GetNexts() =>
+            Update?.GetInvocationList().Select(x => x.Target).OfType<ITreeView>() ?? Enumerable.Empty<ITreeView>();
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace QuantTC
 {
-	public static class Functions
+	public static partial class X
 	{
 		/// <summary>
 		/// Take the range of [left, right)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using static QuantTC.X;
 
 namespace QuantTC.Statistics.Window
 {
@@ -21,9 +22,9 @@ namespace QuantTC.Statistics.Window
         /// <param name="close">close(i, j): should the window started from 'i' be close at 'j'?</param>
         public static IEnumerable<Tuple<int, int>> Windows(int n, Func<int, bool> open, Func<int, int, bool> close)
         {
-            return Functions.Range(0, n)
+            return Range(0, n)
                 .Where(open)
-                .Select(i => Tuple.Create(i, Functions.Range(i + 1, n).FirstOrDefault(j => close(i, j))))
+                .Select(i => Tuple.Create(i, Range(i + 1, n).FirstOrDefault(j => close(i, j))))
                 .Where(t => t.Item1 < t.Item2);
         }
         /// <summary>

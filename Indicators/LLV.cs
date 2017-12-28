@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using QuantTC.Data;
 using QuantTC.Indicators.Generic;
+using static QuantTC.X;
 
 namespace QuantTC.Indicators
 {
@@ -20,7 +21,7 @@ namespace QuantTC.Indicators
 
         private void Source_Update()
         {
-            Data.FillRange(Count, Low.Count, i => Functions.RangeRight(0, i + 1).Take(Period).Min(ii => Low[ii].Low));
+            Data.FillRange(Count, Low.Count, i => RangeRight(0, i + 1).Take(Period).Min(ii => Low[ii].Low));
             FollowUp();
         }
 

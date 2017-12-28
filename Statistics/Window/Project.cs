@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using static QuantTC.X;
 
 namespace QuantTC.Statistics.Window
 {
@@ -14,7 +15,7 @@ namespace QuantTC.Statistics.Window
 			OResults = Os.Select(condition =>
 				Tuple.Create(
 					condition,
-					Functions.Range(0, N).Where(condition.Query).ToArray()
+					Range(0, N).Where(condition.Query).ToArray()
 				)).ToDictionary(t => t.Item1, t => t.Item2);
 		}
 
@@ -29,7 +30,7 @@ namespace QuantTC.Statistics.Window
 							kvp.Value.Select(oi =>
 								Tuple.Create(
 									oi,
-									Functions.Range(oi + 1, N).FirstOrDefault(i => cc.Query(oi, i))
+									Range(oi + 1, N).FirstOrDefault(i => cc.Query(oi, i))
 								)).Where(t => t.Item1 < t.Item2).ToArray()
 						)).ToDictionary(t => t.Item1, t => t.Item2)
 				)).ToDictionary(t => t.Item1, t => t.Item2);

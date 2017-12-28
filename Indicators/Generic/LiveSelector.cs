@@ -12,7 +12,7 @@ namespace QuantTC.Indicators.Generic
 	/// <typeparam name="T1">Origin Type</typeparam>
 	/// <typeparam name="T2">Target Type</typeparam>
 	/// <remarks>It calls selector function every time accessing its data, which may cause performance issue</remarks>
-    public class LiveSelector<T1, T2>: Indicator, IIndicator<T2>
+    public class LiveSelector<T1, T2>: IIndicator<T2>, ITreeView
     {
 	    /// <inheritdoc />
 		public LiveSelector(IIndicator<T1> source, Func<T1, int, T2> selector)
@@ -22,7 +22,9 @@ namespace QuantTC.Indicators.Generic
 		    Source.Update += FollowUp;
 	    }
 
-	    /// <inheritdoc />
+        private void FollowUp() => Update?.Invoke();
+
+        /// <inheritdoc />
 	    public IEnumerator<T2> GetEnumerator() => Source.Select(Selector).GetEnumerator();
 
 	    /// <inheritdoc />
@@ -36,5 +38,12 @@ namespace QuantTC.Indicators.Generic
 
 		private IIndicator<T1> Source { get; }
 		private Func<T1, int, T2> Selector { get; }
+        /// <inheritdoc />
+        public event Action Update;
+        /// <inheritdoc />
+        public string Title { get; set; }
+
+        public IEnumerable<ITreeView> GetNexts() =>
+            Update?.GetInvocationList().Select(x => x.Target).OfType<ITreeView>() ?? Enumerable.Empty<ITreeView>();
     }
 }
