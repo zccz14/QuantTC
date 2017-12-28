@@ -9,7 +9,7 @@ namespace QuantTC.Indicators
     /// <summary>
     /// 移动极差
     /// </summary>
-    public class MovingRange: Indicator<double>
+    public class MovingRange : Indicator<double>
     {
         /// <inheritdoc />
         public MovingRange(IIndicator<IPriceHL> source, int period)

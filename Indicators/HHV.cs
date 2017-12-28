@@ -12,7 +12,7 @@ namespace QuantTC.Indicators
     /// <summary>
     /// Highest High Value
     /// </summary>
-    public class HHV: Indicator<double>
+    public class HHV : Indicator<double>
     {
         /// <inheritdoc />
         public HHV(IIndicator<IPriceH> high, int period)
