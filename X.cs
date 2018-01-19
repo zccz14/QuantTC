@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace QuantTC
@@ -20,5 +21,32 @@ namespace QuantTC
 
         public static IEnumerable<int> ToRangeRight(this Tuple<int, int> range) =>
             RangeRight(range.Item1, range.Item2);
+
+        public static T MaxAt<T>(this IEnumerable<T> This, Func<T, double> val)
+        {
+            var enumerable = This as T[] ?? This.ToArray();
+            var t = enumerable.FirstOrDefault();
+            foreach (var e in enumerable)
+            {
+                if (val(t) < val(e))
+                {
+                    t = e;
+                }
+            }
+            return t;
+        }
+        public static T MinAt<T>(this IEnumerable<T> This, Func<T, double> val)
+        {
+            var enumerable = This as T[] ?? This.ToArray();
+            var t = enumerable.FirstOrDefault();
+            foreach (var e in enumerable)
+            {
+                if (val(t) > val(e))
+                {
+                    t = e;
+                }
+            }
+            return t;
+        }
     }
 }
