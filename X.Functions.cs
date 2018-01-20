@@ -129,5 +129,20 @@ namespace QuantTC
         /// <param name="ints">Indicators' count</param>
         /// <returns>minimum count</returns>
         public static int Min(params int[] ints) => ints.Min();
+
+        /// <summary>
+        /// Linear Scaled Euclidean Distance:
+        /// Math.Sqrt(Math.Pow((x1 - x2) * scaleX, 2) + Math.Pow((y1 - y2) * scaleY, 2))
+        /// </summary>
+        /// <param name="x1"></param>
+        /// <param name="y1"></param>
+        /// <param name="x2"></param>
+        /// <param name="y2"></param>
+        /// <param name="scaleX"></param>
+        /// <param name="scaleY"></param>
+        /// <returns></returns>
+        public static double ScaledDistance(int x1, double y1, int x2, double y2, double scaleX, double scaleY) =>
+            Math.Sqrt(Math.Pow((x1 - x2) * scaleX, 2) + Math.Pow((y1 - y2) * scaleY, 2));
+
     }
 }
