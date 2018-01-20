@@ -53,6 +53,12 @@ namespace QuantTC
         public static bool IsUpX(this Tuple<double, double> subject, double value) =>
             subject.Item1 <= value && subject.Item2 > value;
 
+        public static bool IsUpXAt(this IReadOnlyList<double> subject, int index, double value) =>
+            IsUpX(subject.NearPairAt(index), value);
+
+        public static bool IsDownXAt(this IReadOnlyList<double> subject, int index, double value) =>
+            IsDownX(subject.NearPairAt(index), value);
+
         /// <summary>
         /// Judge if a value tuple become less than another
         /// </summary>
