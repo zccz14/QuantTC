@@ -78,6 +78,8 @@ namespace QuantTC.Data
 
         public static double UpperShadow(this IPriceOHC price) => price.High - price.Top();
         public static double LowerShadow(this IPriceOLC price) => price.Bottom() - price.Low;
+
+        public static double Body(this IPriceHL price) => price.High - price.Low;
     }
 }
 #pragma warning restore CS1591 // 缺少对公共可见类型或成员的 XML 注释
