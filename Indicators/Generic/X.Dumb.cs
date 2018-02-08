@@ -5,7 +5,7 @@ using QuantTC.Data;
 
 namespace QuantTC.Indicators.Generic
 {
-    public static class DumbX
+    public static partial class X
     {
         public static Dumb<T> ToIndicator<T>(this IEnumerable<T> source)
         {

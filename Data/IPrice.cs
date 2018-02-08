@@ -74,7 +74,7 @@ namespace QuantTC.Data
         int OpenInterest { get; }
     }
 
-    public static class X
+    public static partial class X
     {
         public static bool IsBullish(this IPriceOC bar) => bar.Close > bar.Open;
         public static bool IsBearish(this IPriceOC bar) => bar.Close < bar.Open;

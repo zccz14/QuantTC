@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace QuantTC.Indicators.Generic
 {
-    public static partial class IndicatorX
+    public static partial class X
     {
         public static void Print(this ITreeView root)
         {

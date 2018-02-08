@@ -62,7 +62,7 @@ namespace QuantTC.Indicators.Generic
     /// <summary>
     /// Indicator Extension
     /// </summary>
-    public static partial class IndicatorX
+    public static partial class X
     {
         /// <summary>
         /// Get Following Indicators

@@ -24,7 +24,7 @@
     /// <summary>
     /// Extension for IBoll Datum
     /// </summary>
-    public static class BollX
+    public static partial class X
     {
         /// <summary>
         /// Width = Upper - Lower
