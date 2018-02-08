@@ -58,7 +58,7 @@ namespace QuantTC.Indicators
         /// <summary>
         /// Middle Line
         /// </summary>
-        public IIndicator<double> Middle { get; }
+        public IMovingAverage Middle { get; }
 
         /// <summary>
         /// Lower Line

@@ -3,11 +3,11 @@ using QuantTC.Indicators.Generic;
 
 namespace QuantTC.Indicators
 {
-    /// <inheritdoc />
+    /// <inheritdoc cref="IMovingAverage" />
     /// <summary>
     /// Exponential Moving Average
     /// </summary>
-    public class EMA : Indicator<double>
+    public class EMA : Indicator<double>, IMovingAverage
     {
         /// <inheritdoc />
         public EMA(IIndicator<double> source, int period)

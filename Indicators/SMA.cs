@@ -4,11 +4,11 @@ using static QuantTC.X;
 
 namespace QuantTC.Indicators
 {
-    /// <inheritdoc />
+    /// <inheritdoc cref="IMovingAverage" />
     /// <summary>
     /// Simple Moving Average
     /// </summary>
-    public class SMA : Indicator<double>
+    public class SMA : Indicator<double>, IMovingAverage
     {
         /// <inheritdoc />
         public SMA(IIndicator<double> source, int period)

@@ -59,12 +59,12 @@ namespace QuantTC.Indicators
         /// <summary>
         /// Fast Line
         /// </summary>
-        public IIndicator<double> Fast { get; }
+        public IMovingAverage Fast { get; }
 
         /// <summary>
         /// Slow Line
         /// </summary>
-        public IIndicator<double> Slow { get; }
+        public IMovingAverage Slow { get; }
 
         /// <summary>
         /// DIFF := Fast - Slow
