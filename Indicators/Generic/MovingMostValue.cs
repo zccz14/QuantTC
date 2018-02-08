@@ -78,7 +78,7 @@ namespace QuantTC.Indicators.Generic
         /// <param name="period"></param>
         /// <returns></returns>
         public static MovingMostValue<double> HighestValue(this IIndicator<double> This, int period) =>
-            This.MMV(period, (x, y) => y < x ? -1 : (x < y ? 1 : 0));
+            This.MMV(period, (x, y) => y.CompareTo(x));
 
         /// <summary>
         /// Lowest Value
@@ -87,6 +87,6 @@ namespace QuantTC.Indicators.Generic
         /// <param name="period"></param>
         /// <returns></returns>
         public static MovingMostValue<double> LowestValue(this IIndicator<double> This, int period) =>
-            This.MMV(period, (x, y) => x < y ? -1 : (y < x ? 1 : 0));
+            This.MMV(period, (x, y) => x.CompareTo(y));
     }
 }
