@@ -98,4 +98,10 @@ namespace QuantTC.Indicators
         /// </summary>
         public int DiffPeriod { get; }
     }
+    public static partial class X
+    {
+        public static MACD MACD(this IIndicator<double> source, int fastPeriod, int slowPeriod, int diffPeriod) =>
+            new MACD(source, fastPeriod, slowPeriod, diffPeriod);
+    }
+
 }

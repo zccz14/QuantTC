@@ -29,4 +29,9 @@ namespace QuantTC.Indicators
         private IIndicator<double> Source { get; }
         private int Period { get; }
     }
+
+    public static partial class X
+    {
+        public static EMA EMA(this IIndicator<double> source, int period) => new EMA(source, period);
+    }
 }

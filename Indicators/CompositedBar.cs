@@ -35,4 +35,10 @@ namespace QuantTC.Indicators
         private IIndicator<IPrice> Source { get; }
         public int Period { get; }
     }
+    public static partial class X
+    {
+        public static CompositedBar Composite(this IIndicator<IPrice> source, int period) =>
+            new CompositedBar(source, period);
+    }
+
 }

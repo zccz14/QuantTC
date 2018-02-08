@@ -31,7 +31,7 @@ namespace QuantTC.Indicators
 
         private void Main()
         {
-            Data.FillRange(Count, X.Min(Lower.Count, Middle.Count, Upper.Count),
+            Data.FillRange(Count, QuantTC.X.Min(Lower.Count, Middle.Count, Upper.Count),
                 i => new Datum {Lower = Lower[i], Middle = Middle[i], Upper = Upper[i]});
             FollowUp();
         }
@@ -79,5 +79,11 @@ namespace QuantTC.Indicators
         /// Deviation
         /// </summary>
         public double Deviation { get; }
+    }
+
+    public static partial class X
+    {
+        public static BOLL BOLL(this IIndicator<double> source, int period, double deviation) =>
+            new BOLL(source, period, deviation);
     }
 }

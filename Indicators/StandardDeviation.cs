@@ -51,4 +51,14 @@ namespace QuantTC.Indicators
         public IIndicator<double> Average { get; }
         public int Period { get; }
     }
+    public static partial class X
+    {
+        public static StandardDeviation StdDev(this IIndicator<double> source, int period) =>
+            new StandardDeviation(source, period);
+
+        public static StandardDeviation
+            StdDev(this IIndicator<double> source, int period, IIndicator<double> average) =>
+            new StandardDeviation(source, average, period);
+    }
+
 }
