@@ -1,7 +1,5 @@
-﻿using System.Linq;
-using QuantTC.Data;
+﻿using QuantTC.Data;
 using QuantTC.Indicators.Generic;
-using static QuantTC.X;
 
 namespace QuantTC.Indicators
 {
@@ -16,18 +14,24 @@ namespace QuantTC.Indicators
         {
             Source = source;
             Period = period;
+            High = Source.Transform(p => p.High);
+            Low = Source.Transform(p => p.Low);
+            Hhv = High.HighestValue(Period);
+            Llv = Low.LowestValue(Period);
             Source.Update += SourceOnUpdate;
         }
 
         private void SourceOnUpdate()
         {
-            Data.FillRange(Count, Source.Count,
-                i => RangeRight(0, i + 1).Take(Period).Select(ii => Source[ii].High).Max() -
-                     RangeRight(0, i + 1).Take(Period).Select(ii => Source[ii].Low).Min());
+            Data.FillRange(Count, Source.Count, i => Hhv[i] - Llv[i]);
             FollowUp();
         }
 
         private IIndicator<IPriceHL> Source { get; }
+        private IIndicator<double> High { get; }
+        private IIndicator<double> Low { get; }
+        private MovingMostValue<double> Hhv { get; }
+        private MovingMostValue<double> Llv { get; }
         private int Period { get; }
     }
 }
