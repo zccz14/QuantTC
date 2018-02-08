@@ -27,11 +27,11 @@ namespace QuantTC.Indicators
             FollowUp();
         }
 
-        private IIndicator<IPriceHL> Source { get; }
-        private IIndicator<double> High { get; }
-        private IIndicator<double> Low { get; }
-        private MovingMostValue<double> Hhv { get; }
-        private MovingMostValue<double> Llv { get; }
-        private int Period { get; }
+        public IIndicator<IPriceHL> Source { get; }
+        public IIndicator<double> High { get; }
+        public IIndicator<double> Low { get; }
+        public MovingMostValue<double> Hhv { get; }
+        public MovingMostValue<double> Llv { get; }
+        public int Period { get; }
     }
 }
