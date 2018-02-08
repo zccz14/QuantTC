@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using QuantTC.Data;
 using QuantTC.Indicators.Generic;
 using static QuantTC.X;
@@ -9,6 +10,7 @@ namespace QuantTC.Indicators
     /// <summary>
     /// Highest High Value
     /// </summary>
+    [Obsolete("Using MovingMostValue instand")]
     public class HHV : Indicator<double>
     {
         /// <inheritdoc />

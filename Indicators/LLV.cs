@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using QuantTC.Data;
 using QuantTC.Indicators.Generic;
 using static QuantTC.X;
@@ -9,6 +10,7 @@ namespace QuantTC.Indicators
     /// <summary>
     /// Lowest Low Value
     /// </summary>
+    [Obsolete("Using MovingMostValue instand")]
     public class LLV : Indicator<double>
     {
         /// <inheritdoc />
