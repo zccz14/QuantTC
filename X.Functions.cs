@@ -56,6 +56,18 @@ namespace QuantTC
         public static bool IsUpXAt(this IReadOnlyList<double> subject, int index, double value) =>
             IsUpX(subject.NearPairAt(index), value);
 
+        public static bool IsUpXAt(this IReadOnlyList<double> This, IReadOnlyList<double> that, int i) =>
+            This.NearPairAt(i).IsUpX(that.NearPairAt(i));
+
+        public static bool IsUpX(this IReadOnlyList<double> This, IReadOnlyList<double> that) =>
+            This.IsUpXAt(that, This.Count - 1);
+
+        public static bool IsDownX(this IReadOnlyList<double> This, IReadOnlyList<double> that) =>
+            This.IsDownXAt(that, This.Count - 1);
+
+        public static bool IsDownXAt(this IReadOnlyList<double> This, IReadOnlyList<double> that, int i) =>
+            This.NearPairAt(i).IsDownX(that.NearPairAt(i));
+
         public static bool IsDownXAt(this IReadOnlyList<double> subject, int index, double value) =>
             IsDownX(subject.NearPairAt(index), value);
 
@@ -157,5 +169,32 @@ namespace QuantTC
         public static double ScaledDistance(int x1, double y1, int x2, double y2, double scaleX, double scaleY) =>
             Math.Sqrt(Math.Pow((x1 - x2) * scaleX, 2) + Math.Pow((y1 - y2) * scaleY, 2));
 
+        /// <summary>
+        /// Linear Scaled Slope:
+        /// ((y2 - y1) * scaleY) / ((x2 - x1) * scaleX)
+        /// </summary>
+        /// <param name="x1"></param>
+        /// <param name="y1"></param>
+        /// <param name="x2"></param>
+        /// <param name="y2"></param>
+        /// <param name="scaleX"></param>
+        /// <param name="scaleY"></param>
+        /// <returns></returns>
+        public static double ScaledSlope(int x1, double y1, int x2, double y2, double scaleX, double scaleY) =>
+            ((y2 - y1) * scaleY) / ((x2 - x1) * scaleX);
+
+        /// <summary>
+        /// Cast deg to arc
+        /// </summary>
+        /// <param name="deg"></param>
+        /// <returns></returns>
+        public static double ToArc(this double deg) => deg * Math.PI / 180.0;
+
+        /// <summary>
+        /// Cast arc to deg
+        /// </summary>
+        /// <param name="arc"></param>
+        /// <returns></returns>
+        public static double ToDeg(this double arc) => arc * 180.0 / Math.PI;
     }
 }
