@@ -31,4 +31,18 @@ namespace QuantTC.Indicators.Generic
         private IIndicator<T1> Source { get; }
         private Func<T1, T2> Func { get; }
     }
+
+    public static partial class X
+    {
+        /// <summary>
+        /// Transform an indicator to another
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <param name="This"></param>
+        /// <param name="func"></param>
+        /// <returns></returns>
+        public static Transformer<T1, T2> Transform<T1, T2>(this IIndicator<T1> This, Func<T1, T2> func) =>
+            new Transformer<T1, T2>(This, func);
+    }
 }
