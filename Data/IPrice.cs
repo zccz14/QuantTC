@@ -225,22 +225,22 @@ namespace QuantTC.Data
             This[i].IsIntersect(that[i]);
 
         public static bool IsInsideDownXAt(this IReadOnlyList<IPriceHC> This, IReadOnlyList<double> that, int i) =>
-            This[i].HighClose().IsDownX(that[i]);
+            This[i].HighClose().IsDx(that[i]);
 
         public static bool IsInsideUpXAt(this IReadOnlyList<IPriceLC> This, IReadOnlyList<double> that, int i) =>
-            This[i].LowClose().IsUpX(that[i]);
+            This[i].LowClose().IsUx(that[i]);
 
         public static bool IsCloseUpXAt(this IReadOnlyList<IPriceC> This, IReadOnlyList<double> that, int i) =>
-            (This[i - 1].Close, This[i].Close).IsUpX(that.NearPairAt(i));
+            (This[i - 1].Close, This[i].Close).IsUx(that.NearPairAt(i));
 
         public static bool IsCloseDownXAt(this IReadOnlyList<IPriceC> This, IReadOnlyList<double> that, int i) =>
-            (This[i - 1].Close, This[i].Close).IsDownX(that.NearPairAt(i));
+            (This[i - 1].Close, This[i].Close).IsDx(that.NearPairAt(i));
 
         public static bool IsLowUpXAt(this IReadOnlyList<IPriceL> This, IReadOnlyList<double> that, int i) =>
-            (This[i - 1].Low, This[i].Low).IsUpX(that.NearPairAt(i));
+            (This[i - 1].Low, This[i].Low).IsUx(that.NearPairAt(i));
 
         public static bool IsHighDownXAt(this IReadOnlyList<IPriceH> This, IReadOnlyList<double> that, int i) =>
-            (This[i - 1].High, This[i].High).IsDownX(that.NearPairAt(i));
+            (This[i - 1].High, This[i].High).IsDx(that.NearPairAt(i));
 
         /// <summary>
         /// Price down crossed in any way

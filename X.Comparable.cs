@@ -5,87 +5,104 @@ namespace QuantTC
 {
     public static partial class X
     {
-        // Principles
-        public static bool IsUX<T>(this (T, T) This, IComparable<T> that) =>
-            that.CompareTo(This.Item1) >= 0 && that.CompareTo(This.Item2) < 0;
-
-        public static bool IsDX<T>(this (T, T) This, IComparable<T> that) =>
-            that.CompareTo(This.Item1) <= 0 && that.CompareTo(This.Item2) > 0;
-
-        public static bool IsUX<T>(this (T, T) This, (IComparable<T>, IComparable<T>) that) =>
-            that.Item1.CompareTo(This.Item1) >= 0 && that.Item2.CompareTo(This.Item2) < 0;
-
-        public static bool IsDX<T>(this (T, T) This, (IComparable<T>, IComparable<T>) that) =>
-            that.Item1.CompareTo(This.Item1) <= 0 && that.Item2.CompareTo(This.Item2) > 0;
-
-        // Extensions
-        public static bool IsUXAt<T>(this IReadOnlyList<T> This, int i, IComparable<T> that) =>
-            IsUX(This.NearPairAt(i), that);
-
-        public static bool IsDXAt<T>(this IReadOnlyList<T> This, int i, IComparable<T> that) =>
-            IsDX(This.NearPairAt(i), that);
-
-        public static bool IsUXAt<T>(this IReadOnlyList<T> This, IReadOnlyList<IComparable<T>> that, int i) =>
-            This.NearPairAt(i).IsUX(that.NearPairAt(i));
-
-        public static bool IsDXAt<T>(this IReadOnlyList<T> This, IReadOnlyList<IComparable<T>> that, int i) =>
-            This.NearPairAt(i).IsDX(that.NearPairAt(i));
-
-        public static bool IsUX<T>(this IReadOnlyList<T> This, IReadOnlyList<IComparable<T>> that) =>
-            This.IsUXAt(that, This.Count - 1);
-
-        public static bool IsDX<T>(this IReadOnlyList<T> This, IReadOnlyList<IComparable<T>> that) =>
-            This.IsDXAt(that, This.Count - 1);
-
-        // Principles
-        public static bool IsUpX<T>(this (IComparable<T>, IComparable<T>) This, T that) =>
+        /// <summary>
+        /// Is Upward Cross: This.Item1 &lt;= that &lt; This.Item2
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="This"></param>
+        /// <param name="that"></param>
+        /// <returns></returns>
+        public static bool IsUx<T>(this (IComparable<T>, IComparable<T>) This, T that) =>
             This.Item1.CompareTo(that) <= 0 && This.Item2.CompareTo(that) > 0;
 
-        public static bool IsDownX<T>(this (IComparable<T>, IComparable<T>) This, T that) =>
+        /// <summary>
+        /// Is Downward Cross: This.Item1 &gt;= that &gt; This.Item2
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="This"></param>
+        /// <param name="that"></param>
+        /// <returns></returns>
+        public static bool IsDx<T>(this (IComparable<T>, IComparable<T>) This, T that) =>
             This.Item1.CompareTo(that) >= 0 && This.Item2.CompareTo(that) < 0;
 
-        public static bool IsUpX<T>(this (IComparable<T>, IComparable<T>) This, (T, T) that) =>
+        /// <summary>
+        /// Is Upward Cross: This.Item1 &lt;= that.Item1 and that.Item2 &lt; This.Item2
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="This"></param>
+        /// <param name="that"></param>
+        /// <returns></returns>
+        public static bool IsUx<T>(this (IComparable<T>, IComparable<T>) This, (T, T) that) =>
             This.Item1.CompareTo(that.Item1) <= 0 && This.Item2.CompareTo(that.Item2) > 0;
 
-        public static bool IsDownX<T>(this (IComparable<T>, IComparable<T>) This, (T, T) that) =>
+        /// <summary>
+        /// Is Downward Cross: This.Item1 &gt;= that.Item1 and that.Item2 &gt; This.Item2
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="This"></param>
+        /// <param name="that"></param>
+        /// <returns></returns>
+        public static bool IsDx<T>(this (IComparable<T>, IComparable<T>) This, (T, T) that) =>
             This.Item1.CompareTo(that.Item1) >= 0 && This.Item2.CompareTo(that.Item2) < 0;
 
-        // Extensions
-        public static bool IsUpXAt<T>(this IReadOnlyList<IComparable<T>> This, int i, T that) =>
-            IsUpX(This.NearPairAt(i), that);
-
-        public static bool IsDownXAt<T>(this IReadOnlyList<IComparable<T>> This, int i, T that) =>
-            IsDownX(This.NearPairAt(i), that);
-
-        public static bool IsUpXAt<T>(this IReadOnlyList<IComparable<T>> This, IReadOnlyList<T> that, int i) =>
-            This.NearPairAt(i).IsUpX(that.NearPairAt(i));
-
-        public static bool IsDownXAt<T>(this IReadOnlyList<IComparable<T>> This, IReadOnlyList<T> that, int i) =>
-            This.NearPairAt(i).IsDownX(that.NearPairAt(i));
-
-        public static bool IsUpX<T>(this IReadOnlyList<IComparable<T>> This, IReadOnlyList<T> that) =>
-            This.IsUpXAt(that, This.Count - 1);
-
-        public static bool IsDownX<T>(this IReadOnlyList<IComparable<T>> This, IReadOnlyList<T> that) =>
-            This.IsDownXAt(that, This.Count - 1);
-
-        #region Deprecated
-        [Obsolete("Using ValueTuple instand")]
-        public static bool IsUpX(this Tuple<double, double> subject, Tuple<double, double> @object) =>
-            subject.Item1 <= @object.Item1 && subject.Item2 > @object.Item2;
         /// <summary>
-        /// Judge if a value tuple become less than another
+        /// Is Upward Cross: (This[i - 1], This[i]) Ux that
         /// </summary>
-        [Obsolete("Using ValueTuple instand")]
-        public static bool IsDownX(this Tuple<double, double> subject, Tuple<double, double> @object) =>
-            subject.Item1 >= @object.Item1 && subject.Item2 < @object.Item2;
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <param name="This"></param>
+        /// <param name="that"></param>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        /// <seealso>
+        ///     <cref>IsUx</cref>
+        /// </seealso>
+        public static bool IsUxAt<T1, T2>(this IReadOnlyList<T1> This, T2 that, int i)
+            where T1 : IComparable<T2> => This.NearPairAt(i).IsUx(that);
 
         /// <summary>
-        /// Judge if a value tuple become less than a contain value
+        /// Is Downward Cross: (This[i - 1], This[i]) Dx that
         /// </summary>
-        [Obsolete("Using ValueTuple instand")]
-        public static bool IsDownX(this Tuple<double, double> subject, double value) =>
-            subject.Item1 >= value && subject.Item2 < value;
-        #endregion
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <param name="This"></param>
+        /// <param name="that"></param>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        /// <seealso>
+        ///     <cref>IsDx</cref>
+        /// </seealso>
+        public static bool IsDxAt<T1, T2>(this IReadOnlyList<T1> This, T2 that, int i)
+            where T1 : IComparable<T2> => This.NearPairAt(i).IsDx(that);
+
+        /// <summary>
+        /// Is Upward Cross: (This[i - 1], This[i]) Ux (that[i - 1], that[i])
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <param name="This"></param>
+        /// <param name="that"></param>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        /// <seealso>
+        ///     <cref>IsDx</cref>
+        /// </seealso>
+        public static bool IsUxAt<T1, T2>(this IReadOnlyList<T1> This, IReadOnlyList<T2> that, int i)
+            where T1 : IComparable<T2> => This.NearPairAt(i).IsUx(that.NearPairAt(i));
+
+        /// <summary>
+        /// Is Downward Cross: (This[i - 1], This[i]) Dx (that[i - 1], that[i])
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <param name="This"></param>
+        /// <param name="that"></param>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        /// <seealso>
+        ///     <cref>IsDx</cref>
+        /// </seealso>
+        public static bool IsDxAt<T1, T2>(this IReadOnlyList<T1> This, IReadOnlyList<T2> that, int i)
+            where T1 : IComparable<T2> => This.NearPairAt(i).IsDx(that.NearPairAt(i));
     }
 }
