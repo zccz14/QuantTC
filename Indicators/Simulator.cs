@@ -53,7 +53,7 @@ namespace QuantTC.Indicators
         /// </summary>
         public void Resume()
         {
-            X.Range(Count, Source.Count).ForEach(i =>
+            QuantTC.X.Range(Count, Source.Count).ForEach(i =>
             {
                 Count = i + 1;
                 Update?.Invoke();

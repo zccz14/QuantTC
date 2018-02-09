@@ -8,14 +8,13 @@ namespace QuantTC
     public static partial class X
     {
         /// <summary>
-        /// VT(src[idx - 1], src[idx])
+        /// short cut for (This[i - 1], This[i])
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="source"></param>
-        /// <param name="index"></param>
+        /// <param name="This"></param>
+        /// <param name="i"></param>
         /// <returns></returns>
-        public static Tuple<T, T> NearPairAt<T>(this IReadOnlyList<T> source, int index) =>
-            Tuple.Create(source[index - 1], source[index]);
+        public static (T, T) NearPairAt<T>(this IReadOnlyList<T> This, int i) => (This[i - 1], This[i]);
 
         public static IEnumerable<int> ToRange(this Tuple<int, int> range) => Range(range.Item1, range.Item2);
 

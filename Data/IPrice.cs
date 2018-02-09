@@ -113,8 +113,8 @@ namespace QuantTC.Data
         public static IIndicator<double> Low(this IIndicator<IPriceL> This) => This.Transform(p => p.Low);
         public static IIndicator<double> Close(this IIndicator<IPriceC> This) => This.Transform(p => p.Close);
 
-        public static Tuple<double, double> HighClose(this IPriceHC This) => QuantTC.X.VT(This.High, This.Close);
-        public static Tuple<double, double> LowClose(this IPriceLC This) => QuantTC.X.VT(This.Low, This.Close);
+        public static (double, double) HighClose(this IPriceHC This) => (This.High, This.Close);
+        public static (double, double) LowClose(this IPriceLC This) => (This.Low, This.Close);
 
         public static bool IsIntersect(this IPriceHL This, double that) => that.IsBetween(This.Low, This.High);
 
@@ -131,16 +131,16 @@ namespace QuantTC.Data
             This[i].LowClose().IsUpX(that[i]);
 
         public static bool IsCloseUpXAt(this IReadOnlyList<IPriceC> This, IReadOnlyList<double> that, int i) =>
-            QuantTC.X.VT(This[i - 1].Close, This[i].Close).IsUpX(that.NearPairAt(i));
+            (This[i - 1].Close, This[i].Close).IsUpX(that.NearPairAt(i));
 
         public static bool IsCloseDownXAt(this IReadOnlyList<IPriceC> This, IReadOnlyList<double> that, int i) =>
-            QuantTC.X.VT(This[i - 1].Close, This[i].Close).IsDownX(that.NearPairAt(i));
+            (This[i - 1].Close, This[i].Close).IsDownX(that.NearPairAt(i));
 
         public static bool IsLowUpXAt(this IReadOnlyList<IPriceL> This, IReadOnlyList<double> that, int i) =>
-            QuantTC.X.VT(This[i - 1].Low, This[i].Low).IsUpX(that.NearPairAt(i));
+            (This[i - 1].Low, This[i].Low).IsUpX(that.NearPairAt(i));
 
         public static bool IsHighDownXAt(this IReadOnlyList<IPriceH> This, IReadOnlyList<double> that, int i) =>
-            QuantTC.X.VT(This[i - 1].High, This[i].High).IsDownX(that.NearPairAt(i));
+            (This[i - 1].High, This[i].High).IsDownX(that.NearPairAt(i));
 
         /// <summary>
         /// Price down crossed in any way

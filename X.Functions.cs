@@ -28,70 +28,8 @@ namespace QuantTC
             }
         }
 
-        public static IEnumerable<Tuple<T, int>> Range<T>(this IReadOnlyList<T> source, int left, int right) =>
-            Range(left, right).Select(i => Tuple.Create(source[i], i));
-
-        /// <summary>
-        /// Judge if a value tuple become greater than another
-        /// </summary>
-//		public static bool IsUpX(this (double, double) subject, (double, double) @object) =>
-//			subject.Item1 <= @object.Item1 && subject.Item2 > @object.Item2;
-        /// <summary>
-        /// Judge if a value tuple become greater than another
-        /// </summary>
-        public static bool IsUpX(this Tuple<double, double> subject, Tuple<double, double> @object) =>
-            subject.Item1 <= @object.Item1 && subject.Item2 > @object.Item2;
-
-        /// <summary>
-        /// Judge if a value tuple become greater than a contain value
-        /// </summary>
-//		public static bool IsUpX(this (double, double) subject, double value) =>
-//			subject.Item1 <= value && subject.Item2 > value;
-        /// <summary>
-        /// Judge if a value tuple become greater than a contain value
-        /// </summary>
-        public static bool IsUpX(this Tuple<double, double> subject, double value) =>
-            subject.Item1 <= value && subject.Item2 > value;
-
-        public static bool IsUpXAt(this IReadOnlyList<double> subject, int index, double value) =>
-            IsUpX(subject.NearPairAt(index), value);
-
-        public static bool IsUpXAt(this IReadOnlyList<double> This, IReadOnlyList<double> that, int i) =>
-            This.NearPairAt(i).IsUpX(that.NearPairAt(i));
-
-        public static bool IsUpX(this IReadOnlyList<double> This, IReadOnlyList<double> that) =>
-            This.IsUpXAt(that, This.Count - 1);
-
-        public static bool IsDownX(this IReadOnlyList<double> This, IReadOnlyList<double> that) =>
-            This.IsDownXAt(that, This.Count - 1);
-
-        public static bool IsDownXAt(this IReadOnlyList<double> This, IReadOnlyList<double> that, int i) =>
-            This.NearPairAt(i).IsDownX(that.NearPairAt(i));
-
-        public static bool IsDownXAt(this IReadOnlyList<double> subject, int index, double value) =>
-            IsDownX(subject.NearPairAt(index), value);
-
-        /// <summary>
-        /// Judge if a value tuple become less than another
-        /// </summary>
-//		public static bool IsDownX(this (double, double) subject, (double, double) @object) =>
-//			subject.Item1 >= @object.Item1 && subject.Item2 < @object.Item2;
-        /// <summary>
-        /// Judge if a value tuple become less than another
-        /// </summary>
-        public static bool IsDownX(this Tuple<double, double> subject, Tuple<double, double> @object) =>
-            subject.Item1 >= @object.Item1 && subject.Item2 < @object.Item2;
-
-        /// <summary>
-        /// Judge if a value tuple become less than a contain value
-        /// </summary>
-//		public static bool IsDownX(this (double, double) subject, double value) =>
-//			subject.Item1 >= value && subject.Item2 < value;
-        /// <summary>
-        /// Judge if a value tuple become less than a contain value
-        /// </summary>
-        public static bool IsDownX(this Tuple<double, double> subject, double value) =>
-            subject.Item1 >= value && subject.Item2 < value;
+        public static IEnumerable<(T, int)> Range<T>(this IReadOnlyList<T> source, int left, int right) =>
+            Range(left, right).Select(i => (source[i], i));
 
         /// <summary>
         /// Judge if a value is same signed with another
