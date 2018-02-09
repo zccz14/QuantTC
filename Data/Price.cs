@@ -45,6 +45,17 @@ namespace QuantTC.Data
         /// Construct a price instance from a formatted string
         /// </summary>
         /// <param name="data">{Datetime},{Open},{High},{Low},{Close},{Volume},{OpenInterest}</param>
+        [Obsolete("Using Parse instand")]
         public static Price FromString(string data) => FromStringArray(data.Split(','));
+
+        /// <summary>
+        /// Converts the string representation of {Datetime},{Open},{High},{Low},{Close},{Volume},{OpenInterest} to its Price equivalent.
+        /// </summary>
+        /// <param name="s">A string contains a price to convert</param>
+        /// <returns>Price</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="FormatException"></exception>
+        /// <exception cref="OverflowException"></exception>
+        public static Price Parse(string s) => FromStringArray(s.Split(','));
     }
 }

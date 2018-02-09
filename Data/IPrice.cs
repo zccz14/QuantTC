@@ -3,74 +3,174 @@ using System.Collections.Generic;
 using System.Linq;
 using QuantTC.Indicators.Generic;
 
-#pragma warning disable CS1591 // 缺少对公共可见类型或成员的 XML 注释
 namespace QuantTC.Data
 {
-    public interface IPriceHC : IPriceH, IPriceC
+    /// <summary>
+    /// the Price Datum with Open Price
+    /// </summary>
+    public interface IPriceO
     {
-
+        /// <summary>
+        /// Open Price
+        /// </summary>
+        double Open { get; }
     }
-    public interface IPriceLC : IPriceL, IPriceC
+
+    /// <summary>
+    /// the Price Datum with High Price
+    /// </summary>
+    public interface IPriceH
     {
-
+        /// <summary>
+        /// High Price
+        /// </summary>
+        double High { get; }
     }
+
+    /// <summary>
+    /// the Price Datum with Low Price
+    /// </summary>
+    public interface IPriceL
+    {
+        /// <summary>
+        /// Low Price
+        /// </summary>
+        double Low { get; }
+    }
+
+    /// <summary>
+    /// the Price Datum with Close Price
+    /// </summary>
+    public interface IPriceC
+    {
+        /// <summary>
+        /// Close Price
+        /// </summary>
+        double Close { get; }
+    }
+
+    /// <inheritdoc cref="IPriceO" />
+    /// <inheritdoc cref="IPriceH" />
+    /// <summary>
+    /// the Price Datum with Open and High Price
+    /// </summary>
     public interface IPriceOH : IPriceO, IPriceH
     {
-
     }
-    public interface IPriceOL : IPriceO, IPriceH
+
+    /// <inheritdoc cref="IPriceO" />
+    /// <inheritdoc cref="IPriceL" />
+    /// <summary>
+    /// the Price Datum with Open and Low Price
+    /// </summary>
+    public interface IPriceOL : IPriceO, IPriceL
     {
-
-    }
-    public interface IPriceHL : IPriceH, IPriceL
-    {
     }
 
+    /// <inheritdoc cref="IPriceO" />
+    /// <inheritdoc cref="IPriceC" />
+    /// <summary>
+    /// the Price Datum with Open and Close Price
+    /// </summary>
     public interface IPriceOC : IPriceO, IPriceC
     {
     }
 
-    public interface IPriceOHC : IPriceOC, IPriceHC, IPriceOH
+    /// <inheritdoc cref="IPriceH" />
+    /// <inheritdoc cref="IPriceL" />
+    /// <summary>
+    /// the Price Datum with High and Low Price
+    /// </summary>
+    public interface IPriceHL : IPriceH, IPriceL
     {
     }
 
-    public interface IPriceOLC : IPriceOC, IPriceLC, IPriceOL
+    /// <inheritdoc cref="IPriceH" />
+    /// <inheritdoc cref="IPriceC" />
+    /// <summary>
+    /// the Price Datum with High and Close Price
+    /// </summary>
+    public interface IPriceHC : IPriceH, IPriceC
     {
-
     }
 
-    public interface IPriceOHLC : IPriceOHC, IPriceOLC, IPriceHL
+    /// <inheritdoc cref="IPriceL" />
+    /// <inheritdoc cref="IPriceC" />
+    /// <summary>
+    /// the Price Datum with Low and Close Price
+    /// </summary>
+    public interface IPriceLC : IPriceL, IPriceC
     {
-
     }
 
-    public interface IPriceHLC: IPriceHL, IPriceHC, IPriceLC { }
-    public interface IPriceOHL: IPriceOH, IPriceOL, IPriceHL { }
-
-    public interface IPriceO
+    /// <inheritdoc cref="IPriceOH" />
+    /// <inheritdoc cref="IPriceOL" />
+    /// <inheritdoc cref="IPriceHL" />
+    /// <summary>
+    /// the Price Datum with Open, High and Low Price
+    /// </summary>
+    public interface IPriceOHL : IPriceOH, IPriceOL, IPriceHL
     {
-        double Open { get; }
     }
 
-    public interface IPriceC
+    /// <inheritdoc cref="IPriceOC" />
+    /// <inheritdoc cref="IPriceOH" />
+    /// <inheritdoc cref="IPriceHC" />
+    /// <summary>
+    /// the Price Datum with Open, High and Close Price
+    /// </summary>
+    public interface IPriceOHC : IPriceOH, IPriceOC, IPriceHC
     {
-        double Close { get; }
     }
 
-    public interface IPriceH
+    /// <inheritdoc cref="IPriceOL" />
+    /// <inheritdoc cref="IPriceOC" />
+    /// <inheritdoc cref="IPriceLC" />
+    /// <summary>
+    /// the Price Datum with Open, Low and Close Price
+    /// </summary>
+    public interface IPriceOLC : IPriceOL, IPriceOC, IPriceLC
     {
-        double High { get; }
     }
 
-    public interface IPriceL
+    /// <inheritdoc cref="IPriceHL" />
+    /// <inheritdoc cref="IPriceHC" />
+    /// <inheritdoc cref="IPriceLC" />
+    /// <summary>
+    /// the Price Datum with High, Low and Close Price
+    /// </summary>
+    public interface IPriceHLC : IPriceHL, IPriceHC, IPriceLC
     {
-        double Low { get; }
     }
 
+    /// <inheritdoc cref="IPriceOHL" />
+    /// <inheritdoc cref="IPriceOHC" />
+    /// <inheritdoc cref="IPriceOLC" />
+    /// <inheritdoc cref="IPriceHLC" />
+    /// <summary>
+    /// the Price Datum with Open, High, Low and Close Price
+    /// </summary>
+    public interface IPriceOHLC : IPriceOHL, IPriceOHC, IPriceOLC, IPriceHLC
+    {
+    }
+
+    /// <inheritdoc />
+    /// <summary>
+    /// The Price Datum with Open, High, Low, Close and other items
+    /// </summary>
     public interface IPrice : IPriceOHLC
     {
+        /// <summary>
+        /// DateTime (at start)
+        /// </summary>
         DateTime DateTime { get; }
+        /// <summary>
+        /// Volume (in lots)
+        /// </summary>
         int Volume { get; }
+        /// <summary>
+        /// Open Interest (in lots)
+        /// </summary>
         int OpenInterest { get; }
     }
 
@@ -163,4 +263,3 @@ namespace QuantTC.Data
             This.IsInsideUpXAt(that, i) || This.IsCloseUpXAt(that, i) || This.IsLowUpXAt(that, i);
     }
 }
-#pragma warning restore CS1591 // 缺少对公共可见类型或成员的 XML 注释
