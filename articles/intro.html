@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Add your introductions here! </title>
+    <title>QuantTC </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Add your introductions here! ">
+    <meta name="title" content="QuantTC ">
     <meta name="generator" content="docfx 2.31.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -67,9 +67,51 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="add-your-introductions-here">Add your introductions here!</h1>
+<h1 id="quanttc">QuantTC</h1>
 
-</article>
+<p>QuantTC (Tool Collection) is a .NET stardard class library, which consists of the most commonly used <strong>static methods</strong>, <strong>indicators</strong> and <strong>datum types</strong>.</p>
+<ul>
+<li><a href="#quanttc">QuantTC</a><ul>
+<li><a href="#namespaces">Namespaces</a></li>
+<li><a href="#extension-methods">Extension Methods</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="namespaces">Namespaces</h2>
+<ul>
+<li><p>QuantTC</p>
+<p>The root namespace of QuantTC project.</p>
+</li>
+<li><p>QuantTC.Data</p>
+<p>The core data types, including interfaces and their implementations. There&#39;re also the most relative extensions.</p>
+</li>
+<li><p>QuantTC.Indicators</p>
+<p>The stardard defined and implemented technical indicators, such as SMA, EMA, MACD, BOLL, ...etc.</p>
+<p>All of the indicators here are non-generic, but they usually have parameters.</p>
+</li>
+<li><p>QuantTC.Indicators.Generic</p>
+<p>Contains the core design of <em>QuantTC Indicators Framework</em>. <code>IIndicator</code> and <code>IIndicator&lt;T&gt;</code> is the abstraction of technical indicators. For the indicators which use <code>List&lt;T&gt;</code> as storage, the generic typed class <code>Indicator&lt;T&gt;</code> works well .There&#39;re many generic typed indicators, like <code>Dumb&lt;T&gt;</code>, <code>Transformer&lt;T&gt;</code>, <code>BinaryOperation&lt;T1, T2, T3&gt;</code>, <code>MovingMostValue&lt;T&gt;</code>, ...etc.</p>
+</li>
+</ul>
+<h2 id="extension-methods">Extension Methods</h2>
+<p>Thanks to C#, we can extend types without change its structure and inheritance. That&#39;s what we called <em>Extension Methods</em></p>
+<p>QuantTC used <em>Extension Methods</em> everywhere. Sometimes it seems to be magical effects.</p>
+<p>All of the standard QuantTC extensions are written in static <strong>partial</strong> class <code>X</code> in each namespace, such as <code>QuantTC.X</code>, <code>QuantTC.Data.X</code>, <code>QuantTC.Indicators.X</code> and <code>QuantTC.Indicators.Generic.X</code>.</p>
+<p>The reason why the class is <strong>partial</strong> specified is to arrange the extension methods closer to their extending type.</p>
+<p>Once using the namespace of QuantTC, the corresponding extension methods are imported.</p>
+<p>Anyway, many extension methods are so simple that it&#39;s hard to define a reasonable &quot;this&quot; object. For example,</p>
+<pre><code class="lang-c#">// In static class QuantTC.X
+public static int Min(params int[] args);
+</code></pre><p>Hard to find a reasonable &quot;<strong>this</strong>&quot;, right?</p>
+<p>You can invoke them like a normal static method.</p>
+<pre><code class="lang-c#">using QuantTC;
+// ...
+X.Min(1, 2, 3, -1, 4); // should returning -1
+</code></pre><p>or import them statically:</p>
+<pre><code class="lang-c#">using static QuantTC.X;
+// ...
+Min(1, 2, 3, -1, 4); // should returning -1
+</code></pre></article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
