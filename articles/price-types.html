@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Price Types </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Price Types ">
+    <meta name="generator" content="docfx 2.31.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="price-types">Price Types</h1>
+
+<p>Keisen (candlestick) is a most commonly used tool to analyze the market price.</p>
+<p>Sometimes there&#39;s no requirement to use all the data in a keisen datum. Following the interface segregation principle (ISP), it should be defined as following interfaces:</p>
+<pre><code class="lang-csharp">public interface IPriceO
+{
+    double Open { get; }
+}
+
+public interface IPriceH
+{
+    double High { get; }
+}
+
+public interface IPriceL
+{
+    double Low { get; }
+}
+
+public interface IPriceC
+{
+    double Close { get; }
+}
+</code></pre><p>And then composite them into the following forms:</p>
+<pre><code class="lang-csharp">public interface IPriceOH : IPriceO, IPriceH { }
+public interface IPriceOL : IPriceO, IPriceL { }
+public interface IPriceOC : IPriceO, IPriceC { }
+public interface IPriceHL : IPriceH, IPriceL { }
+public interface IPriceHC : IPriceH, IPriceC { }
+public interface IPriceLC : IPriceL, IPriceC { }
+public interface IPriceOHL : IPriceOH, IPriceOL, IPriceHL { }
+public interface IPriceOHC : IPriceOH, IPriceOC, IPriceHC { }
+public interface IPriceOLC : IPriceOL, IPriceOC, IPriceLC { }
+public interface IPriceHLC : IPriceHL, IPriceHC, IPriceLC { }
+public interface IPriceOHLC : IPriceOHL, IPriceOHC, IPriceOLC, IPriceHLC { }
+</code></pre><p>And make it with other vendors:</p>
+<pre><code class="lang-csharp">public interface IPrice : IPriceOHLC
+{
+    DateTime DateTime { get; }
+    int Volume { get; }
+    int OpenInterest { get; }
+}
+</code></pre><p>Finally, let&#39;s precisely implement the final interface <code>IPrice</code> with class <code>Price</code>:</p>
+<pre><code class="lang-c#">public class Price: IPrice
+{
+    // ...data members with setters / getters
+}
+</code></pre><p>And with the deserialization, similar to <code>int.Parse</code> and <code>double.Parse</code>, we have <code>Price.Parse</code> method, which converts the string representation of <code>$&quot;{Datetime},{Open},{High},{Low},{Close},{Volume},{OpenInterest}&quot;</code> to its Price equivalent.</p>
+<pre><code class="lang-c#">public static Price Parse(string s);
+</code></pre><h2 id="minimal-grained-extension">Minimal-grained Extension</h2>
+<p>Then, we can define several extension methods to enhance the price type:</p>
+<pre><code class="lang-csharp">public static partial class X
+{
+    public static bool IsBullish(this IPriceOC price) =&gt; price.Close &gt; price.Open;
+    public static bool IsBearish(this IPriceOC price) =&gt; price.Close &lt; price.Open;
+    public static double Top(this IPriceOC price) =&gt; Math.Max(price.Close, price.Open);
+    public static double Bottom(this IPriceOC price) =&gt; Math.Min(price.Close, price.Open);
+    public static double RealBody(this IPriceOC price) =&gt; Math.Abs(price.Close - price.Open);
+    public static double UpperShadow(this IPriceOHC price) =&gt; price.High - price.Top();
+    public static double LowerShadow(this IPriceOLC price) =&gt; price.Bottom() - price.Low;
+    // ... etc
+}
+</code></pre><h2 id="use-as-base-type">Use As Base Type</h2>
+<p>We can define <code>As*</code> methods to turn the derived types to the base types:</p>
+<pre><code class="lang-csharp">public static partial class X
+{
+    public static IPriceO AsPriceO(this IPriceO price) =&gt; price;
+    public static IPriceH AsPriceH(this IPriceH price) =&gt; price;
+    public static IPriceL AsPriceL(this IPriceL price) =&gt; price;
+    public static IPriceC AsPriceC(this IPriceC price) =&gt; price;
+    public static IPriceOC AsPriceOC(this IPriceOC price) =&gt; price;
+    public static IPriceHL AsPriceHL(this IPriceHL price) =&gt; price;
+    public static IPriceOHC AsPriceOHC(this IPriceOHC price) =&gt; price;
+    public static IPriceOLC AsPriceOLC(this IPriceOLC price) =&gt; price;
+    public static IPriceOHLC AsPriceOHLC(this IPriceOHLC price) =&gt; price;
+}
+</code></pre><h2 id="validation">Validation</h2>
+<p>so we can define <code>IsValid</code> method to validate the datum:</p>
+<pre><code class="lang-csharp">public static partial class X
+{
+    public static bool IsValid(this IPriceO price) =&gt; price.Open &gt; 0;
+    public static bool IsValid(this IPriceH price) =&gt; price.High &gt; 0;
+    public static bool IsValid(this IPriceL price) =&gt; price.Low &gt; 0;
+    public static bool IsValid(this IPriceC price) =&gt; price.Close &gt; 0;
+    public static bool IsValid(this IPriceOC price) =&gt; price.AsPriceO().IsValid() &amp;&amp; price.AsPriceC().IsValid();
+    public static bool IsValid(this IPriceHL price) =&gt; price.AsPriceH().IsValid() &amp;&amp; price.AsPriceL().IsValid() &amp;&amp; price.High &gt;= price.Low;
+    public static bool IsValid(this IPriceOHC price) =&gt; price.AsPriceOC().IsValid() &amp;&amp; price.AsPriceH().IsValid() &amp;&amp; price.High &gt;= price.Open &amp;&amp; price.High &gt;= price.Close;
+    public static bool IsValid(this IPriceOLC price) =&gt; price.AsPriceOC().IsValid() &amp;&amp; price.AsPriceL().IsValid() &amp;&amp; price.Low &lt;= price.Open &amp;&amp; price.Low &lt;= price.Close;
+    public static bool IsValid(this IPriceOHLC price) =&gt; price.AsPriceOHC().IsValid() &amp;&amp; price.AsPriceOLC().IsValid() &amp;&amp; price.AsPriceHL().IsValid();
+}
+</code></pre></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/zccz14/QuantTC/blob/master/articles/price-types.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

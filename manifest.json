@@ -941,11 +941,47 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "articles/crossing.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/crossing.html",
+          "hash": "waCoQcsGNjozxVxd0AUoaA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "articles/intro.md",
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "2LEVWoULTTDJv6jyGl2IkQ=="
+          "hash": "qXC+tQgoN0yhfild22fFwQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/iteration.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/iteration.html",
+          "hash": "8CRsdqEwv64E4OQkFO7z/A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/price-types.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/price-types.html",
+          "hash": "lkBcxxDmYXE+J1XmyazUxg=="
         }
       },
       "is_incremental": false,
@@ -957,7 +993,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/toc.html",
-          "hash": "xVlQaX7Tk85omoiWv3O+Ag=="
+          "hash": "A86QPF7VS3jxW06fZqkiiQ=="
         }
       },
       "is_incremental": false,
@@ -972,7 +1008,7 @@
           "hash": "zAacNcASDw6zOmlroMhAoQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -981,7 +1017,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "ob7LqWp4kTNLz+9W4omdTw=="
+          "hash": "frPdeW5hGroGiyexwMQIhg=="
         }
       },
       "is_incremental": false,

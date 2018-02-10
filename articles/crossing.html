@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>QuantTC </title>
+    <title>Crossing Predicates </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="QuantTC ">
+    <meta name="title" content="Crossing Predicates ">
     <meta name="generator" content="docfx 2.31.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -67,43 +67,30 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="quanttc">QuantTC</h1>
+<h1 id="crossing-predicates">Crossing Predicates</h1>
 
-<p>QuantTC (Tool Collection) is a .NET stardard class library, which consists of the most commonly used <strong>static methods</strong>, <strong>indicators</strong> and <strong>datum types</strong>.</p>
-<h2 id="namespaces">Namespaces</h2>
-<ul>
-<li><p>QuantTC</p>
-<p>The root namespace of QuantTC project.</p>
-</li>
-<li><p>QuantTC.Data</p>
-<p>The core data types, including interfaces and their implementations. There&#39;re also the most relative extensions.</p>
-</li>
-<li><p>QuantTC.Indicators</p>
-<p>The stardard defined and implemented technical indicators, such as SMA, EMA, MACD, BOLL, ...etc.</p>
-<p>All of the indicators here are non-generic, but they usually have parameters.</p>
-</li>
-<li><p>QuantTC.Indicators.Generic</p>
-<p>Contains the core design of <em>QuantTC Indicators Framework</em>. <code>IIndicator</code> and <code>IIndicator&lt;T&gt;</code> is the abstraction of technical indicators. For the indicators which use <code>List&lt;T&gt;</code> as storage, the generic typed class <code>Indicator&lt;T&gt;</code> works well .There&#39;re many generic typed indicators, like <code>Dumb&lt;T&gt;</code>, <code>Transformer&lt;T&gt;</code>, <code>BinaryOperation&lt;T1, T2, T3&gt;</code>, <code>MovingMostValue&lt;T&gt;</code>, ...etc.</p>
-</li>
-</ul>
-<h2 id="extension-methods">Extension Methods</h2>
-<p>Thanks to C#, we can extend types without change its structure and inheritance. That&#39;s what we called <em>Extension Methods</em></p>
-<p>QuantTC used <em>Extension Methods</em> everywhere. Sometimes it seems to be magical effects.</p>
-<p>All of the standard QuantTC extensions are written in static <strong>partial</strong> class <code>X</code> in each namespace, such as <code>QuantTC.X</code>, <code>QuantTC.Data.X</code>, <code>QuantTC.Indicators.X</code> and <code>QuantTC.Indicators.Generic.X</code>.</p>
-<p>The reason why the class is <strong>partial</strong> specified is to arrange the extension methods closer to their extending type.</p>
-<p>Once using the namespace of QuantTC, the corresponding extension methods are imported.</p>
-<p>Anyway, many extension methods are so simple that it&#39;s hard to define a reasonable &quot;this&quot; object. For example,</p>
-<pre><code class="lang-c#">// In static class QuantTC.X
-public static int Min(params int[] args);
-</code></pre><p>Hard to find a reasonable &quot;<strong>this</strong>&quot;, right?</p>
-<p>You can invoke them like a normal static method.</p>
-<pre><code class="lang-c#">using QuantTC;
-// ...
-X.Min(1, 2, 3, -1, 4); // should returning -1
-</code></pre><p>or import them statically:</p>
-<pre><code class="lang-c#">using static QuantTC.X;
-// ...
-Min(1, 2, 3, -1, 4); // should returning -1
+<p>The concept &#39;<strong>crossing</strong>&#39; is widely used in trading analysis.</p>
+<p>For example, <em>Trend Following</em> strategies have a common point: be long above a moving average indicator, and close when the price was <strong>downward crossed</strong> the moving average indicator.</p>
+<p>Crossing has a direction: <strong>Upward</strong> or <strong>Downward</strong>.</p>
+<p>Extract a predicate form: <strong>A</strong> was (<strong>upward</strong> | <strong>downward</strong>) <strong>crossed</strong> <strong>B</strong>.</p>
+<p>Take upward crossing for example, <strong>how to define or judge if one was upward crossed another?</strong></p>
+<p>Crossing is a time-related concept. The predicate &#39;A was upward crossed B&#39; means that A is greater than B <strong>currently</strong>, but A is not greater than B <strong>previously</strong>.</p>
+<p>But how to define <strong>currently</strong> and <strong>previously</strong>?</p>
+<p>For derived indicators, the &#39;currently&#39; and &#39;previously&#39; just simply means &#39;the current value&#39; and &#39;the previous value&#39; correspondingly.</p>
+<p>For period-based price, the &#39;currently&#39; usually means &#39;the current close price&#39;, but the &#39;previously&#39; can be treated as &#39;the previous close price&#39;, &#39;the current lowest price&#39; or &#39;the previous lowest price&#39;.</p>
+<h2 id="api">API</h2>
+<p>Arbitrary type <code>T</code> or <code>(T, T)</code> can be upward/downward crossed by a <code>(IComparable&lt;T&gt;, IComparable&lt;T&gt;)</code>. Semantically, <code>(T, T)</code> means <code>(previous, current)</code>.</p>
+<pre><code class="lang-C#">// static class QuantTC.X
+public static bool IsUx&lt;T&gt;(this (IComparable&lt;T&gt;, IComparable&lt;T&gt;) This, T that);
+public static bool IsDx&lt;T&gt;(this (IComparable&lt;T&gt;, IComparable&lt;T&gt;) This, T that);
+public static bool IsUx&lt;T&gt;(this (IComparable&lt;T&gt;, IComparable&lt;T&gt;) This, (T, T) that);
+public static bool IsDx&lt;T&gt;(this (IComparable&lt;T&gt;, IComparable&lt;T&gt;) This, (T, T) that);
+</code></pre><p>For the application on <code>IReadOnlyList&lt;T&gt;</code>:</p>
+<pre><code class="lang-c#">// static class QuantTC.X
+public static bool IsUxAt&lt;T1, T2&gt;(this IReadOnlyList&lt;T1&gt; This, T2 that, int i) where T1 : IComparable&lt;T2&gt;;
+public static bool IsDxAt&lt;T1, T2&gt;(this IReadOnlyList&lt;T1&gt; This, T2 that, int i) where T1 : IComparable&lt;T2&gt;;
+public static bool IsUxAt&lt;T1, T2&gt;(this IReadOnlyList&lt;T1&gt; This, IReadOnlyList&lt;T2&gt; that, int i) where T1 : IComparable&lt;T2&gt;;
+public static bool IsDxAt&lt;T1, T2&gt;(this IReadOnlyList&lt;T1&gt; This, IReadOnlyList&lt;T2&gt; that, int i) where T1 : IComparable&lt;T2&gt;;
 </code></pre></article>
           </div>
           
@@ -112,7 +99,7 @@ Min(1, 2, 3, -1, 4); // should returning -1
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/zccz14/QuantTC/blob/master/articles/intro.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/zccz14/QuantTC/blob/master/articles/crossing.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Iteration </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Iteration ">
+    <meta name="generator" content="docfx 2.31.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="iteration">Iteration</h1>
+
+<p>Inspired by C# Linq, abstracting the &#39;iteration&#39; is a great idea to simplify the program. Forget using the ugly &#39;for-loop&#39; and &#39;while-loop&#39; everywhere in your code.</p>
+<p>But for some reason, .NET standard doesn&#39;t support the API we need. But it&#39;s easy to extend by yourself!</p>
+<h2 id="range-iteration">Range Iteration</h2>
+<p>Intergers are widely treated as &#39;index&#39;, &#39;shift&#39;, &#39;address&#39;, &#39;numbering&#39;, ...etc. So iteration of integer is a plain requirement.</p>
+<p>Iterating an integer is usually like this:</p>
+<pre><code class="lang-c#">for (var i = left; i &lt; right; i++) {
+    // do something with i
+}
+</code></pre><p>or in a reversed order, from right-end to left-end:</p>
+<pre><code class="lang-c#">for (var i = right - 1; i &gt;= left; i--) {
+    // do something with i
+}
+</code></pre><p>Now extract two methods correspondingly, they are both iteration in the interval of [left, right):</p>
+<pre><code class="lang-c#">// static class QuantTC.X
+public static IEnumerable&lt;int&gt; RangeL(int left, int right); // Left to Right
+public static IEnumerable&lt;int&gt; RangeR(int left, int right); // Right to Left
+</code></pre><p>Another way to specify the iteration direction is to give a reversed flag to the summary method.</p>
+<pre><code class="lang-c#">// static class QuantTC.X
+public static IEnumerable&lt;int&gt; Range(int left, int right, bool reversed = false);
+</code></pre><h3 id="value-tuple">Value Tuple</h3>
+<p>A value tuple of type <code>(int, int)</code> can also be treated as range.</p>
+<pre><code class="lang-c#">// static class QuantTC.X
+public static IEnumerable&lt;int&gt; AsRange(this (int, int) This, bool reversed = false);
+public static IEnumerable&lt;int&gt; AsRangeL(this (int, int) This);
+public static IEnumerable&lt;int&gt; AsRangeR(this (int, int) This);
+</code></pre><h3 id="ireadonlylist">IReadOnlyList</h3>
+<p>For <code>IReadOnlyList&lt;T&gt;</code>, Range* can simply apply to this list type:</p>
+<pre><code class="lang-c#">// static class QuantTC.X
+public static IEnumerable&lt;(T, int)&gt; Range&lt;T&gt;(this IReadOnlyList&lt;T&gt; This, int left, int right, bool reversed = false);
+public static IEnumerable&lt;(T, int)&gt; RangeL&lt;T&gt;(this IReadOnlyList&lt;T&gt; This, int left, int right);
+public static IEnumerable&lt;(T, int)&gt; RangeR&lt;T&gt;(this IReadOnlyList&lt;T&gt; This, int left, int right);
+</code></pre><p>The yield returning type is <code>(T, int)</code>, the later means the index <code>i</code>, the former is the corresponding value <code>This[i]</code>. If you want to discard the index:</p>
+<pre><code class="lang-c#">// Using C# 7.0 Discard Syntax
+void Test1&lt;T&gt;(IReadOnlyList&lt;T&gt; a, int l, int r)
+{
+    foreach (var (v, _) in a.RangeL(l, r))
+    {
+        // do something with v
+    }
+}
+// Using Linq Select API
+void Test2&lt;T&gt;(IReadOnlyList&lt;T&gt; a, int l, int r)
+{
+    foreach (var v in a.RangeL(l, r).Select(t =&gt; t.Item1))
+    {
+        // do something with v
+    }
+}
+</code></pre><p>Actually, the type <code>IReadOnlyList&lt;T&gt;</code> has a implicit range [0, Count). So we can ignore some of arguments.</p>
+<pre><code>// static class QuantTC.X
+
+// left to right: [left, Count) 
+public static IEnumerable&lt;(T, int)&gt; FromL&lt;T&gt;(this IReadOnlyList&lt;T&gt; This, int left); 
+// right to left: [0, right)
+public static IEnumerable&lt;(T, int)&gt; FromR&lt;T&gt;(this IReadOnlyList&lt;T&gt; This, int right);
+</code></pre><p>In .NET Standard API, type <code>IReadOnlyList&lt;T&gt;</code> already has an extension method named <code>Reverse</code>. BUT it was built on <code>IEnumerable&lt;T&gt;</code>, so the performance is really bad. The native method cost O(N) space complexity while the <code>Reverse</code> <strong>should</strong> only cost O(1) space. In pure algorithm view, the native method is slower because of constructing a value stack. Worse more, the much larger memory that the native method allocated should be free later, which cause a garbage collection (GC) process.</p>
+<p>For compatibility to .NET Standard API, there&#39;re two reverse methods applied to <code>IReadOnlyList&lt;T&gt;</code>:</p>
+<pre><code class="lang-c#">public static IEnumerable&lt;T&gt; Reverse&lt;T&gt;(this IReadOnlyList&lt;T&gt; This); // right to left [0, Count)
+public static IEnumerable&lt;(T, int)&gt; ReverseX&lt;T&gt;(this IReadOnlyList&lt;T&gt; This); // right to left [0, Count)
+</code></pre><p>The redefined method <code>Reverse</code> has a higher type declaration than the native <code>Reverse</code> method. So the C# <strong>&#39;best matching&#39;</strong> mechanism will automatically switch from the native to the redefined. It enhanced the performance without any cost!</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/zccz14/QuantTC/blob/master/articles/iteration.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
