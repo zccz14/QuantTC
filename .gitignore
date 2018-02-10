@@ -1,2 +1,6 @@
 bin
 obj
+# docfx
+api
+_site
+log.txt

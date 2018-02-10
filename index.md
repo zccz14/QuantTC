@@ -12,8 +12,6 @@ QuantTC mainly supports the following features:
 + Relational Predicates
 + Core Data Types
 
-See the [project page](https://zccz14.github.io/QuantTC) for full documentation.
-
 ## Compatibility
 
 Because of the lastest feature `System.ValueTuple`:
