@@ -14,6 +14,8 @@ QuantTC mainly supports the following features:
 
 See the project [Wiki](https://github.com/zccz14/QuantTC/wiki) for details.
 
+See the [project page](https://github.com/zccz14/QuantTC/index.html) for full documentation.
+
 ## Compatibility
 
 Because of the lastest feature `System.ValueTuple`:
