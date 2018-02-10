@@ -3,3 +3,5 @@
 - name: API Documentation
   href: api/
   homepage: api/index.md
+- name: Source Code
+  href: https://github.com/zccz14/QuantTC
