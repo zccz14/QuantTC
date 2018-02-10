@@ -12,7 +12,7 @@
           "hash": "A4OMyF11t8gZl+iQgfxjoQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -948,7 +948,7 @@
           "hash": "waCoQcsGNjozxVxd0AUoaA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -960,7 +960,7 @@
           "hash": "qXC+tQgoN0yhfild22fFwQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -972,7 +972,7 @@
           "hash": "8CRsdqEwv64E4OQkFO7z/A=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -984,7 +984,7 @@
           "hash": "lkBcxxDmYXE+J1XmyazUxg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1000,12 +1000,15 @@
       "version": ""
     },
     {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
       "type": "Conceptual",
       "source_relative_path": "index.md",
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "zAacNcASDw6zOmlroMhAoQ=="
+          "hash": "E0CfRmW3jQfZ2JsTS24kBA=="
         }
       },
       "is_incremental": false,
