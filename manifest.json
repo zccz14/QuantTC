@@ -1,0 +1,1029 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Users/zccz14/source/repos/Quant.NET/QuantTC",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "README.md",
+      "output": {
+        ".html": {
+          "relative_path": "README.html",
+          "hash": "W4pPtP6IatRdr/W/Dr1c1w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Data.IBoll.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Data.IBoll.html",
+          "hash": "e2Zcv8cCwM2I0ziccQAYuw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Data.IMacd.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Data.IMacd.html",
+          "hash": "VDzA0W5iuEksK+clFqHrWg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Data.IOrder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Data.IOrder.html",
+          "hash": "dvRWR3AN8v8yjOogwqxEKg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Data.IPrice.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Data.IPrice.html",
+          "hash": "Md9hSMdTbX3vrI8/DeX+Bw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Data.IPriceC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Data.IPriceC.html",
+          "hash": "bsfINPRzXY9tNAYpnGbF2g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Data.IPriceH.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Data.IPriceH.html",
+          "hash": "CoxbOdP6ZeGYdoBYK2Ou+A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Data.IPriceHC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Data.IPriceHC.html",
+          "hash": "fxrOnZiVVRqUt7NqJo5fTA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Data.IPriceHL.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Data.IPriceHL.html",
+          "hash": "zUQWH8Ibr8F6sieUOXFcqQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Data.IPriceHLC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Data.IPriceHLC.html",
+          "hash": "UMCkU64UqVaoohHXbW3UXA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Data.IPriceL.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Data.IPriceL.html",
+          "hash": "989yjjlq9AIjIdLRQCD5qw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Data.IPriceLC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Data.IPriceLC.html",
+          "hash": "VUvYD90Q2Y05t/AiNVlO4g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Data.IPriceO.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Data.IPriceO.html",
+          "hash": "MDYLOxrf9kDoXXTjRPSFyw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Data.IPriceOC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Data.IPriceOC.html",
+          "hash": "zUVq+ROSsrHhPkW0ydUdeg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Data.IPriceOH.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Data.IPriceOH.html",
+          "hash": "/y/HmmtU6TT32qqDiw048Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Data.IPriceOHC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Data.IPriceOHC.html",
+          "hash": "gC9pl8zuPBkLa7seIwUmhg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Data.IPriceOHL.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Data.IPriceOHL.html",
+          "hash": "s1rflV79TSkumBmTAYzBCA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Data.IPriceOHLC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Data.IPriceOHLC.html",
+          "hash": "qM/yl5aqRzMuFbZ9nGuQvg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Data.IPriceOL.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Data.IPriceOL.html",
+          "hash": "ewIb6oJbGO4u0/Rf5FdJHA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Data.IPriceOLC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Data.IPriceOLC.html",
+          "hash": "Wy9eT+pN0xZXh9XMCxB4iA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Data.OrderDirection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Data.OrderDirection.html",
+          "hash": "eEucK32gaFUP68LFAhYOtg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Data.Price.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Data.Price.html",
+          "hash": "RQU6Yw64kFKQIA7xeycWog=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Data.X.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Data.X.html",
+          "hash": "UpS+H3lLlowzsg3xe30aSw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Data.html",
+          "hash": "t6mdC19Ne8+W0CgsKYnNdA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.ITitle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.ITitle.html",
+          "hash": "U4JY28nSmcXxrEQfzI46lg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.BOLL.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.BOLL.html",
+          "hash": "Sa3tp4B2Rsk4pAX+EEuTkg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.Collectors.Cash.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.Collectors.Cash.html",
+          "hash": "eMchiw7yedfORVDVl9YCIQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.Collectors.NetPosition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.Collectors.NetPosition.html",
+          "hash": "8lZJyYSJtPY0KlZdKdP4Kw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.Collectors.NetValue.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.Collectors.NetValue.html",
+          "hash": "wLjjBB9sDK6N6Oa9/Ym/6Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.Collectors.OperationCounter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.Collectors.OperationCounter.html",
+          "hash": "d3ArOuwclCjx8E5zzzNVPQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.Collectors.OrderAgent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.Collectors.OrderAgent.html",
+          "hash": "JIxqMuUAI1i+BAVyZaFDgQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.Collectors.WinningCounter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.Collectors.WinningCounter.html",
+          "hash": "UfZUxP5bwcgkMGIup63x0Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.Collectors.WinningProbability.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.Collectors.WinningProbability.html",
+          "hash": "3ljwvrDe/Pp4e+pIggf/dQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.Collectors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.Collectors.html",
+          "hash": "0378wILfhvH6D5szZR5JKg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.CompositedBar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.CompositedBar.html",
+          "hash": "Img9q/mGnmRaejggHG5wAg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.CsvBarList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.CsvBarList.html",
+          "hash": "0l8giCtfkXo5DnB0IPGKXg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.EMA.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.EMA.html",
+          "hash": "sVEpjnDpAekkWFize/B8vg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.Generic.BinaryOperation-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.Generic.BinaryOperation-3.html",
+          "hash": "6R+P6Auwnq5XeLanRopAKw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.Generic.Dumb-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.Generic.Dumb-1.html",
+          "hash": "rSmGtA8njJgy1os3Zj6v8Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.Generic.EnhancedTransformer-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.Generic.EnhancedTransformer-2.html",
+          "hash": "8D31x71Kfa8vgcYHzsM9Qg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.Generic.IIndicator-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.Generic.IIndicator-1.html",
+          "hash": "yHOdSdGUgo/fs4K1QQgP+w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.Generic.IIndicator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.Generic.IIndicator.html",
+          "hash": "vZVkhEiRAhCO3YzBiWuv4A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.Generic.ITreeView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.Generic.ITreeView.html",
+          "hash": "F/kqlRjmCRT+WBZj6EJz0w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.Generic.Indicator-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.Generic.Indicator-1.html",
+          "hash": "8/DMRCzu6IKhe5H8OJeqeg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.Generic.Indicator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.Generic.Indicator.html",
+          "hash": "PM0Bqya0I1H7Xn2Vtny/UQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.Generic.LiveSelector-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.Generic.LiveSelector-2.html",
+          "hash": "EoC+KgJWsJxywXu4Qow3+Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.Generic.MovingMostValue-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.Generic.MovingMostValue-1.html",
+          "hash": "Qy/NAAtfixZFWvQpDm04FA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.Generic.Transformer-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.Generic.Transformer-2.html",
+          "hash": "m8zZl3V6yZfpNQUWpMuSZA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.Generic.X.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.Generic.X.html",
+          "hash": "aDhm/gHLxUzZrIM/lNw17g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.Generic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.Generic.html",
+          "hash": "/l5dP7SmVS7hHOMoy5hJ4A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.HHV.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.HHV.html",
+          "hash": "vFPyAuThHQP1/7xQSjACfg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.HV.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.HV.html",
+          "hash": "whs0QwbM85tZdJzlTzJWIg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.IMovingAverage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.IMovingAverage.html",
+          "hash": "bteeHfb2thLCOmC7UBynKQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.LLV.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.LLV.html",
+          "hash": "Fjmb7R7I7phqXwq8NZwlqA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.LogROI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.LogROI.html",
+          "hash": "4csMxiYxdVhAVYg4kPgtjA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.MACD.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.MACD.html",
+          "hash": "5rfMmXWwB8mZvDItreD9Hg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.MovingRange.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.MovingRange.html",
+          "hash": "RjkfZLGcTKMJv3oX+lFQ5w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.SMA.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.SMA.html",
+          "hash": "/M53fK+xaL650AL+Dc+UMw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.Simulator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.Simulator.html",
+          "hash": "H6WPjILol5W91OxNe3jeJQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.StandardDeviation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.StandardDeviation.html",
+          "hash": "87loz5HjVEi88Ivk2HiA1Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.X.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.X.html",
+          "hash": "uZ/iQ6ZD6wOiSn59cDGSvA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Indicators.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Indicators.html",
+          "hash": "YEFnFZOt9us9H63Q7hbfLA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Statistics.Window.ClosingCondition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Statistics.Window.ClosingCondition.html",
+          "hash": "XL37KaKA8G84PuuRSC7wHw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Statistics.Window.IClosingCondition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Statistics.Window.IClosingCondition.html",
+          "hash": "pRz5ibqhGuBogsRDUy+GCA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Statistics.Window.IOpeningCondition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Statistics.Window.IOpeningCondition.html",
+          "hash": "LyC/JsvRYuXlrR+Dpye3UQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Statistics.Window.ISubject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Statistics.Window.ISubject.html",
+          "hash": "LS+7rHSRpVaVoveGO6K1xQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Statistics.Window.ISummary.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Statistics.Window.ISummary.html",
+          "hash": "Bz7ylaZ/GPr272jJKi+hmg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Statistics.Window.OpeningCondition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Statistics.Window.OpeningCondition.html",
+          "hash": "266NJwyQBhdAkOHqSxYhog=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Statistics.Window.Project.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Statistics.Window.Project.html",
+          "hash": "fRcfAKBb3+OJsOFp3p+YJQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Statistics.Window.ProjectX.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Statistics.Window.ProjectX.html",
+          "hash": "L0rgrU6bwx3mF9w7pv1vaw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Statistics.Window.Subject-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Statistics.Window.Subject-1.html",
+          "hash": "jhPrU6y/CBrwvBfkGTFB0A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Statistics.Window.Summary.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Statistics.Window.Summary.html",
+          "hash": "Iah5kQ0A+U5ytlJvOzXfwg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Statistics.Window.WindowStatistic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Statistics.Window.WindowStatistic.html",
+          "hash": "JUR6GkXo+GGUJAjar2+5AA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.Statistics.Window.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.Statistics.Window.html",
+          "hash": "MOkzFEuuXRR6aDYJr575uQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.X.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.X.html",
+          "hash": "XLoFSxHmw5nvAUtOUPpyHA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuantTC.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuantTC.html",
+          "hash": "8h5D01H8WwWOFa4Dle1yew=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "XJ6UAJRY5Krmt4XmuJ5P7Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "Su34YOIkEZcZZ4qBPA+jfA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "05YWhk3pVlicEnc9bqCPuw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "xVlQaX7Tk85omoiWv3O+Ag=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "zAacNcASDw6zOmlroMhAoQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "ob7LqWp4kTNLz+9W4omdTw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build"
+      },
+      "processors": {
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ConceptualDocumentProcessor disable incremental build because last build doesn't contain version .",
+          "incrementalPhase": "build"
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build"
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing"
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

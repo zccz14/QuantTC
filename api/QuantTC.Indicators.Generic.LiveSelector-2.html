@@ -1,0 +1,588 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class LiveSelector&lt;T1, T2&gt;
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class LiveSelector&lt;T1, T2&gt;
+   ">
+    <meta name="generator" content="docfx 2.31.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="QuantTC.Indicators.Generic.LiveSelector`2">
+  
+  
+  <h1 id="QuantTC_Indicators_Generic_LiveSelector_2" data-uid="QuantTC.Indicators.Generic.LiveSelector`2" class="text-break">Class LiveSelector&lt;T1, T2&gt;
+  </h1>
+  <div class="markdown level0 summary"><p>Lively Select (Map) an indicator&apos;s data to another without copy its data (no cache)</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">LiveSelector&lt;T1, T2&gt;</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="QuantTC.Indicators.Generic.IIndicator-1.html">IIndicator</a>&lt;T2&gt;</div>
+    <div><a class="xref" href="QuantTC.Indicators.Generic.IIndicator.html">IIndicator</a></div>
+    <div><span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;T2&gt;</div>
+    <div><span class="xref">System.Collections.Generic.IReadOnlyCollection</span>&lt;T2&gt;</div>
+    <div><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;T2&gt;</div>
+    <div><span class="xref">System.Collections.IEnumerable</span></div>
+    <div><a class="xref" href="QuantTC.Indicators.Generic.ITreeView.html">ITreeView</a></div>
+    <div><a class="xref" href="QuantTC.ITitle.html">ITitle</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="QuantTC.Indicators.Generic.html">QuantTC.Indicators.Generic</a></h6>
+  <h6><strong>Assembly</strong>: QuantTC.dll</h6>
+  <h5 id="QuantTC_Indicators_Generic_LiveSelector_2_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class LiveSelector&lt;T1, T2&gt; : IIndicator&lt;T2&gt;, IIndicator, IReadOnlyList&lt;T2&gt;, IReadOnlyCollection&lt;T2&gt;, IEnumerable&lt;T2&gt;, IEnumerable, ITreeView, ITitle</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T1</span></td>
+        <td><p>Origin Type</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">T2</span></td>
+        <td><p>Target Type</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="QuantTC_Indicators_Generic_LiveSelector_2_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>It calls selector function every time accessing its data, which may cause performance issue</p>
+</div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/zccz14/QuantTC/new/master/apiSpec/new?filename=QuantTC_Indicators_Generic_LiveSelector_2__ctor_QuantTC_Indicators_Generic_IIndicator__0__System_Func__0_System_Int32__1__.md&amp;value=---%0Auid%3A%20QuantTC.Indicators.Generic.LiveSelector%602.%23ctor(QuantTC.Indicators.Generic.IIndicator%7B%600%7D%2CSystem.Func%7B%600%2CSystem.Int32%2C%601%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/zccz14/QuantTC/blob/master/Indicators/Generic/LiveSelector.cs/#L18">View Source</a>
+  </span>
+  <a id="QuantTC_Indicators_Generic_LiveSelector_2__ctor_" data-uid="QuantTC.Indicators.Generic.LiveSelector`2.#ctor*"></a>
+  <h4 id="QuantTC_Indicators_Generic_LiveSelector_2__ctor_QuantTC_Indicators_Generic_IIndicator__0__System_Func__0_System_Int32__1__" data-uid="QuantTC.Indicators.Generic.LiveSelector`2.#ctor(QuantTC.Indicators.Generic.IIndicator{`0},System.Func{`0,System.Int32,`1})">LiveSelector(IIndicator&lt;T1&gt;, Func&lt;T1, Int32, T2&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LiveSelector(IIndicator&lt;T1&gt; source, Func&lt;T1, int, T2&gt; selector)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="QuantTC.Indicators.Generic.IIndicator-1.html">IIndicator</a>&lt;T1&gt;</td>
+        <td><span class="parametername">source</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;T1, <span class="xref">System.Int32</span>, T2&gt;</td>
+        <td><span class="parametername">selector</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/zccz14/QuantTC/new/master/apiSpec/new?filename=QuantTC_Indicators_Generic_LiveSelector_2_Count.md&amp;value=---%0Auid%3A%20QuantTC.Indicators.Generic.LiveSelector%602.Count%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/zccz14/QuantTC/blob/master/Indicators/Generic/LiveSelector.cs/#L34">View Source</a>
+  </span>
+  <a id="QuantTC_Indicators_Generic_LiveSelector_2_Count_" data-uid="QuantTC.Indicators.Generic.LiveSelector`2.Count*"></a>
+  <h4 id="QuantTC_Indicators_Generic_LiveSelector_2_Count" data-uid="QuantTC.Indicators.Generic.LiveSelector`2.Count">Count</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Count { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/zccz14/QuantTC/new/master/apiSpec/new?filename=QuantTC_Indicators_Generic_LiveSelector_2_Item_System_Int32_.md&amp;value=---%0Auid%3A%20QuantTC.Indicators.Generic.LiveSelector%602.Item(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/zccz14/QuantTC/blob/master/Indicators/Generic/LiveSelector.cs/#L37">View Source</a>
+  </span>
+  <a id="QuantTC_Indicators_Generic_LiveSelector_2_Item_" data-uid="QuantTC.Indicators.Generic.LiveSelector`2.Item*"></a>
+  <h4 id="QuantTC_Indicators_Generic_LiveSelector_2_Item_System_Int32_" data-uid="QuantTC.Indicators.Generic.LiveSelector`2.Item(System.Int32)">Item[Int32]</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T2 this[int index] { get; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T2</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/zccz14/QuantTC/new/master/apiSpec/new?filename=QuantTC_Indicators_Generic_LiveSelector_2_Title.md&amp;value=---%0Auid%3A%20QuantTC.Indicators.Generic.LiveSelector%602.Title%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/zccz14/QuantTC/blob/master/Indicators/Generic/LiveSelector.cs/#L46">View Source</a>
+  </span>
+  <a id="QuantTC_Indicators_Generic_LiveSelector_2_Title_" data-uid="QuantTC.Indicators.Generic.LiveSelector`2.Title*"></a>
+  <h4 id="QuantTC_Indicators_Generic_LiveSelector_2_Title" data-uid="QuantTC.Indicators.Generic.LiveSelector`2.Title">Title</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Title { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/zccz14/QuantTC/new/master/apiSpec/new?filename=QuantTC_Indicators_Generic_LiveSelector_2_GetEnumerator.md&amp;value=---%0Auid%3A%20QuantTC.Indicators.Generic.LiveSelector%602.GetEnumerator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/zccz14/QuantTC/blob/master/Indicators/Generic/LiveSelector.cs/#L28">View Source</a>
+  </span>
+  <a id="QuantTC_Indicators_Generic_LiveSelector_2_GetEnumerator_" data-uid="QuantTC.Indicators.Generic.LiveSelector`2.GetEnumerator*"></a>
+  <h4 id="QuantTC_Indicators_Generic_LiveSelector_2_GetEnumerator" data-uid="QuantTC.Indicators.Generic.LiveSelector`2.GetEnumerator">GetEnumerator()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerator&lt;T2&gt; GetEnumerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerator</span>&lt;T2&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/zccz14/QuantTC/new/master/apiSpec/new?filename=QuantTC_Indicators_Generic_LiveSelector_2_GetNexts.md&amp;value=---%0Auid%3A%20QuantTC.Indicators.Generic.LiveSelector%602.GetNexts%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/zccz14/QuantTC/blob/master/Indicators/Generic/LiveSelector.cs/#L48">View Source</a>
+  </span>
+  <a id="QuantTC_Indicators_Generic_LiveSelector_2_GetNexts_" data-uid="QuantTC.Indicators.Generic.LiveSelector`2.GetNexts*"></a>
+  <h4 id="QuantTC_Indicators_Generic_LiveSelector_2_GetNexts" data-uid="QuantTC.Indicators.Generic.LiveSelector`2.GetNexts">GetNexts()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;ITreeView&gt; GetNexts()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="QuantTC.Indicators.Generic.ITreeView.html">ITreeView</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="events">Events
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/zccz14/QuantTC/new/master/apiSpec/new?filename=QuantTC_Indicators_Generic_LiveSelector_2_Update.md&amp;value=---%0Auid%3A%20QuantTC.Indicators.Generic.LiveSelector%602.Update%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/zccz14/QuantTC/blob/master/Indicators/Generic/LiveSelector.cs/#L43">View Source</a>
+  </span>
+  <h4 id="QuantTC_Indicators_Generic_LiveSelector_2_Update" data-uid="QuantTC.Indicators.Generic.LiveSelector`2.Update">Update</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event Action Update</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="eii">Explicit Interface Implementations
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/zccz14/QuantTC/new/master/apiSpec/new?filename=QuantTC_Indicators_Generic_LiveSelector_2_System_Collections_IEnumerable_GetEnumerator.md&amp;value=---%0Auid%3A%20QuantTC.Indicators.Generic.LiveSelector%602.System%23Collections%23IEnumerable%23GetEnumerator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/zccz14/QuantTC/blob/master/Indicators/Generic/LiveSelector.cs/#L31">View Source</a>
+  </span>
+  <a id="QuantTC_Indicators_Generic_LiveSelector_2_System_Collections_IEnumerable_GetEnumerator_" data-uid="QuantTC.Indicators.Generic.LiveSelector`2.System#Collections#IEnumerable#GetEnumerator*"></a>
+  <h4 id="QuantTC_Indicators_Generic_LiveSelector_2_System_Collections_IEnumerable_GetEnumerator" data-uid="QuantTC.Indicators.Generic.LiveSelector`2.System#Collections#IEnumerable#GetEnumerator">IEnumerable.GetEnumerator()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerator IEnumerable.GetEnumerator()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.IEnumerator</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="QuantTC.Indicators.Generic.IIndicator-1.html">IIndicator&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.Indicators.Generic.IIndicator.html">IIndicator</a>
+  </div>
+  <div>
+      <span class="xref">System.Collections.Generic.IReadOnlyList&lt;T&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.Generic.IReadOnlyCollection&lt;T&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;</span>
+  </div>
+  <div>
+      <span class="xref">System.Collections.IEnumerable</span>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.Indicators.Generic.ITreeView.html">ITreeView</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.ITitle.html">ITitle</a>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="QuantTC.X.html#QuantTC_X_IsUxAt__2_System_Collections_Generic_IReadOnlyList___0____1_System_Int32_">X.IsUxAt&lt;T1, T2&gt;(IReadOnlyList&lt;T1&gt;, T2, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.X.html#QuantTC_X_IsDxAt__2_System_Collections_Generic_IReadOnlyList___0____1_System_Int32_">X.IsDxAt&lt;T1, T2&gt;(IReadOnlyList&lt;T1&gt;, T2, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.X.html#QuantTC_X_IsUxAt__2_System_Collections_Generic_IReadOnlyList___0__System_Collections_Generic_IReadOnlyList___1__System_Int32_">X.IsUxAt&lt;T1, T2&gt;(IReadOnlyList&lt;T1&gt;, IReadOnlyList&lt;T2&gt;, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.X.html#QuantTC_X_IsDxAt__2_System_Collections_Generic_IReadOnlyList___0__System_Collections_Generic_IReadOnlyList___1__System_Int32_">X.IsDxAt&lt;T1, T2&gt;(IReadOnlyList&lt;T1&gt;, IReadOnlyList&lt;T2&gt;, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.X.html#QuantTC_X_ForEach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__">X.ForEach&lt;T&gt;(IEnumerable&lt;T&gt;, Action&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.X.html#QuantTC_X_WithCounter__1_System_Collections_Generic_IEnumerable___0__">X.WithCounter&lt;T&gt;(IEnumerable&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.X.html#QuantTC_X_Last__1_System_Collections_Generic_IReadOnlyList___0__">X.Last&lt;T&gt;(IReadOnlyList&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.X.html#QuantTC_X_LastOrDefault__1_System_Collections_Generic_IReadOnlyList___0__">X.LastOrDefault&lt;T&gt;(IReadOnlyList&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.X.html#QuantTC_X_KVWhere__1_System_Collections_Generic_IEnumerable___0__System_Func_System_Tuple___0_System_Int32__System_Boolean__">X.KVWhere&lt;T&gt;(IEnumerable&lt;T&gt;, Func&lt;Tuple&lt;T, Int32&gt;, Boolean&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.X.html#QuantTC_X_Find__1_System_Collections_Generic_IEnumerable___0__System_Func_System_Tuple___0_System_Int32__System_Boolean__">X.Find&lt;T&gt;(IEnumerable&lt;T&gt;, Func&lt;Tuple&lt;T, Int32&gt;, Boolean&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.X.html#QuantTC_X_NearPairs__1_System_Collections_Generic_IEnumerable___0__">X.NearPairs&lt;T&gt;(IEnumerable&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.X.html#QuantTC_X_Countdown__1_System_Collections_Generic_IReadOnlyList___0__System_Int32_">X.Countdown&lt;T&gt;(IReadOnlyList&lt;T&gt;, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.X.html#QuantTC_X_Apply__2___0_System_Func___0___1__">X.Apply&lt;TT, TR&gt;(TT, Func&lt;TT, TR&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.X.html#QuantTC_X_Apply__3___0_System_Func___0___1___2____1_">X.Apply&lt;TT, T1, TR&gt;(TT, Func&lt;TT, T1, TR&gt;, T1)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.X.html#QuantTC_X_Apply__4___0_System_Func___0___1___2___3____1___2_">X.Apply&lt;TT, T1, T2, TR&gt;(TT, Func&lt;TT, T1, T2, TR&gt;, T1, T2)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.X.html#QuantTC_X_Apply__5___0_System_Func___0___1___2___3___4____1___2___3_">X.Apply&lt;TT, T1, T2, T3, TR&gt;(TT, Func&lt;TT, T1, T2, T3, TR&gt;, T1, T2, T3)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.X.html#QuantTC_X_Apply__6___0_System_Func___0___1___2___3___4___5____1___2___3___4_">X.Apply&lt;TT, T1, T2, T3, T4, TR&gt;(TT, Func&lt;TT, T1, T2, T3, T4, TR&gt;, T1, T2, T3, T4)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.X.html#QuantTC_X_NearPairAt__1_System_Collections_Generic_IReadOnlyList___0__System_Int32_">X.NearPairAt&lt;T&gt;(IReadOnlyList&lt;T&gt;, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.X.html#QuantTC_X_MaxAt__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__">X.MaxAt&lt;T&gt;(IEnumerable&lt;T&gt;, Func&lt;T, Double&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.X.html#QuantTC_X_MinAt__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__">X.MinAt&lt;T&gt;(IEnumerable&lt;T&gt;, Func&lt;T, Double&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.X.html#QuantTC_X_Range__1_System_Collections_Generic_IReadOnlyList___0__System_Int32_System_Int32_System_Boolean_">X.Range&lt;T&gt;(IReadOnlyList&lt;T&gt;, Int32, Int32, Boolean)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.X.html#QuantTC_X_RangeL__1_System_Collections_Generic_IReadOnlyList___0__System_Int32_System_Int32_">X.RangeL&lt;T&gt;(IReadOnlyList&lt;T&gt;, Int32, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.X.html#QuantTC_X_RangeR__1_System_Collections_Generic_IReadOnlyList___0__System_Int32_System_Int32_">X.RangeR&lt;T&gt;(IReadOnlyList&lt;T&gt;, Int32, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.X.html#QuantTC_X_FromL__1_System_Collections_Generic_IReadOnlyList___0__System_Int32_">X.FromL&lt;T&gt;(IReadOnlyList&lt;T&gt;, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.X.html#QuantTC_X_FromR__1_System_Collections_Generic_IReadOnlyList___0__System_Int32_">X.FromR&lt;T&gt;(IReadOnlyList&lt;T&gt;, Int32)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.X.html#QuantTC_X_Reverse__1_System_Collections_Generic_IReadOnlyList___0__">X.Reverse&lt;T&gt;(IReadOnlyList&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.X.html#QuantTC_X_ReverseX__1_System_Collections_Generic_IReadOnlyList___0__">X.ReverseX&lt;T&gt;(IReadOnlyList&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.Indicators.Generic.X.html#QuantTC_Indicators_Generic_X_LiveSelect__2_QuantTC_Indicators_Generic_IIndicator___0__System_String_System_Func___0_System_Int32___1__">X.LiveSelect&lt;T1, T2&gt;(IIndicator&lt;T1&gt;, String, Func&lt;T1, Int32, T2&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.Indicators.Generic.X.html#QuantTC_Indicators_Generic_X_LiveSelect__2_QuantTC_Indicators_Generic_IIndicator___0__System_Func___0_System_Int32___1__">X.LiveSelect&lt;T1, T2&gt;(IIndicator&lt;T1&gt;, Func&lt;T1, Int32, T2&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.Indicators.Generic.X.html#QuantTC_Indicators_Generic_X_MMV__1_QuantTC_Indicators_Generic_IIndicator___0__System_Int32_System_Comparison___0__">X.MMV&lt;T&gt;(IIndicator&lt;T&gt;, Int32, Comparison&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.Indicators.Generic.X.html#QuantTC_Indicators_Generic_X_Transform__2_QuantTC_Indicators_Generic_IIndicator___0__System_Func___0___1__">X.Transform&lt;T1, T2&gt;(IIndicator&lt;T1&gt;, Func&lt;T1, T2&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.Indicators.Generic.X.html#QuantTC_Indicators_Generic_X_ToIndicator__1_System_Collections_Generic_IEnumerable___0__">X.ToIndicator&lt;T&gt;(IEnumerable&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="QuantTC.Indicators.Generic.X.html#QuantTC_Indicators_Generic_X_Print_QuantTC_Indicators_Generic_ITreeView_">X.Print(ITreeView)</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/zccz14/QuantTC/new/master/apiSpec/new?filename=QuantTC_Indicators_Generic_LiveSelector_2.md&amp;value=---%0Auid%3A%20QuantTC.Indicators.Generic.LiveSelector%602%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/zccz14/QuantTC/blob/master/Indicators/Generic/LiveSelector.cs/#L15" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
