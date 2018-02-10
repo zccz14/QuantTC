@@ -23,7 +23,7 @@ namespace QuantTC.Indicators
 
         private void Source_Update()
         {
-            Data.FillRange(Count, High.Count, i => RangeRight(0, i + 1).Take(Period).Max(ii => High[ii].High));
+            Data.FillRange(Count, High.Count, i => RangeR(0, i + 1).Take(Period).Max(ii => High[ii].High));
             FollowUp();
         }
 

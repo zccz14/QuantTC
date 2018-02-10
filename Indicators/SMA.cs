@@ -21,7 +21,7 @@ namespace QuantTC.Indicators
         private void Source_Update()
         {
             Data.FillRange(Count, Source.Count,
-                i => RangeRight(0, i + 1).Take(Period).Select(ii => Source[ii]).Average());
+                i => RangeR(0, i + 1).Take(Period).Select(ii => Source[ii]).Average());
             FollowUp();
         }
 

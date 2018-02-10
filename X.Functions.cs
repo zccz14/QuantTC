@@ -7,31 +7,6 @@ namespace QuantTC
     public static partial class X
     {
         /// <summary>
-        /// Take the range of [left, right)
-        /// </summary>
-        public static IEnumerable<int> Range(int left, int right)
-        {
-            for (var i = left; i < right; i++)
-            {
-                yield return i;
-            }
-        }
-
-        /// <summary>
-        /// Take the range of [left, right) from the right-end
-        /// </summary>
-        public static IEnumerable<int> RangeRight(int left, int right)
-        {
-            for (var i = right - 1; i >= left; i--)
-            {
-                yield return i;
-            }
-        }
-
-        public static IEnumerable<(T, int)> Range<T>(this IReadOnlyList<T> source, int left, int right) =>
-            Range(left, right).Select(i => (source[i], i));
-
-        /// <summary>
         /// Judge if a value is same signed with another
         /// </summary>
         public static bool IsSameSigned(this double subject, double @object) =>
@@ -64,15 +39,6 @@ namespace QuantTC
             action(t);
             return t;
         };
-
-        public static Tuple<T1> VT<T1>(T1 t1) => Tuple.Create(t1);
-        public static Tuple<T1, T2> VT<T1, T2>(T1 t1, T2 t2) => Tuple.Create(t1, t2);
-        public static Tuple<T1, T2, T3> VT<T1, T2, T3>(T1 t1, T2 t2, T3 t3) => Tuple.Create(t1, t2, t3);
-        public static Tuple<T1, T2, T3, T4> VT<T1, T2, T3, T4>(T1 t1, T2 t2, T3 t3, T4 t4) => Tuple.Create(t1, t2, t3, t4);
-        public static Tuple<T1, T2, T3, T4, T5> VT<T1, T2, T3, T4, T5>(T1 t1, T2 t2, T3 t3, T4 t4, T5 t5) => Tuple.Create(t1, t2, t3, t4, t5);
-        public static Tuple<T1, T2, T3, T4, T5, T6> VT<T1, T2, T3, T4, T5, T6>(T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6) => Tuple.Create(t1, t2, t3, t4, t5, t6);
-        public static Tuple<T1, T2, T3, T4, T5, T6, T7> VT<T1, T2, T3, T4, T5, T6, T7>(T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7) => Tuple.Create(t1, t2, t3, t4, t5, t6, t7);
-        public static Tuple<T1, T2, T3, T4, T5, T6, T7, Tuple<T8>> VT<T1, T2, T3, T4, T5, T6, T7, T8>(T1 t1, T2 t2, T3 t3, T4 t4, T5 t5, T6 t6, T7 t7, T8 t8) => Tuple.Create(t1, t2, t3, t4, t5, t6, t7, t8);
 
         public static int Abs(this int v) => Math.Abs(v);
         public static double Abs(this double v) => Math.Abs(v);

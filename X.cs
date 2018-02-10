@@ -16,11 +16,6 @@ namespace QuantTC
         /// <returns></returns>
         public static (T, T) NearPairAt<T>(this IReadOnlyList<T> This, int i) => (This[i - 1], This[i]);
 
-        public static IEnumerable<int> ToRange(this Tuple<int, int> range) => Range(range.Item1, range.Item2);
-
-        public static IEnumerable<int> ToRangeRight(this Tuple<int, int> range) =>
-            RangeRight(range.Item1, range.Item2);
-
         public static T MaxAt<T>(this IEnumerable<T> This, Func<T, double> val)
         {
             var enumerable = This as T[] ?? This.ToArray();

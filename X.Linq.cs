@@ -77,16 +77,6 @@ namespace QuantTC
         }
 
         /// <summary>
-        /// Left-end range [0, source.Count)
-        /// </summary>
-        public static IEnumerable<int> FromLeftEnd<T>(this IReadOnlyList<T> source) => Range(0, source.Count);
-
-        /// <summary>
-        /// Right-end range [0, source.Count)
-        /// </summary>
-        public static IEnumerable<int> FromRightEnd<T>(this IReadOnlyList<T> source) => RangeRight(0, source.Count);
-
-        /// <summary>
         /// Fill the range [left, right) in List
         /// </summary>
         /// <typeparam name="T">List Element Type</typeparam>
