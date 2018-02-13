@@ -2,7 +2,7 @@
 {
     /// <inheritdoc />
     /// <summary>
-    /// Cell is a wrapped state
+    /// [Experimental] Cell is a wrapped state
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <remarks>

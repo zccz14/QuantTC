@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace QuantTC.Indicators.Generic
 {
     /// <inheritdoc />
     /// <summary>
-    /// Tracking a quantity automatically when timer updated.
+    /// [Experimental] Tracking a quantity automatically when timer updated.
     /// </summary>
     /// <typeparam name="T">Quantity Type</typeparam>
     /// <remarks>
