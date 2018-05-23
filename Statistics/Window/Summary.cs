@@ -8,15 +8,15 @@ namespace QuantTC.Statistics.Window
         /// <inheritdoc />
         public Summary(string title, Func<object[], object> func)
         {
-            Title = title;
+            Name = title;
             Func = func;
         }
 
         /// <inheritdoc />
-        public string Title { get; }
+        public string Name { get; }
 
         /// <inheritdoc />
-        public override string ToString() => Title;
+        public override string ToString() => Name;
 
         /// <inheritdoc />
         public object GetResult(params object[] objects) => Func(objects);

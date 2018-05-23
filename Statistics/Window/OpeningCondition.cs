@@ -8,18 +8,18 @@ namespace QuantTC.Statistics.Window
         /// <inheritdoc />
         public OpeningCondition(string title, Func<int, bool> predicate)
         {
-            Title = title;
+            Name = title;
             Predicate = predicate;
         }
 
         /// <inheritdoc />
-        public string Title { get; }
+        public string Name { get; }
 
         /// <inheritdoc />
         public bool Query(int index) => Predicate(index);
 
         /// <inheritdoc />
-        public override string ToString() => Title;
+        public override string ToString() => Name;
 
         private Func<int, bool> Predicate { get; }
     }

@@ -8,12 +8,12 @@ namespace QuantTC.Statistics.Window
         /// <inheritdoc />
         public Subject(string title, Func<Tuple<int, int>, T> selector)
         {
-            Title = title;
+            Name = title;
             Selector = selector;
         }
 
         /// <inheritdoc />
-        public string Title { get; }
+        public string Name { get; }
 
         /// <inheritdoc />
         public object GetResult(Tuple<int, int> window)
@@ -22,7 +22,7 @@ namespace QuantTC.Statistics.Window
         }
 
         /// <inheritdoc />
-        public override string ToString() => Title;
+        public override string ToString() => Name;
 
         private Func<Tuple<int, int>, T> Selector { get; }
     }

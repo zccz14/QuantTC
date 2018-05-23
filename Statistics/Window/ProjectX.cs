@@ -13,20 +13,20 @@ namespace QuantTC.Statistics.Window
             project.OCSSResults.ForEach(ovp =>
             {
                 var oc = ovp.Key;
-                Console.WriteLine($"{oc.Title}");
+                Console.WriteLine($"{oc.Name}");
                 ovp.Value.ForEach(cvp =>
                 {
                     var cc = cvp.Key;
-                    Console.WriteLine($"\t{cc.Title}");
+                    Console.WriteLine($"\t{cc.Name}");
                     cvp.Value.ForEach(svp =>
                     {
                         var subject = svp.Key;
-                        Console.WriteLine($"\t\t{subject.Title}");
+                        Console.WriteLine($"\t\t{subject.Name}");
                         svp.Value.ForEach(srp =>
                         {
                             var summary = srp.Key;
                             var result = srp.Value;
-                            Console.WriteLine($"\t\t\t{summary.Title}: {result}");
+                            Console.WriteLine($"\t\t\t{summary.Name}: {result}");
                         });
                     });
                 });

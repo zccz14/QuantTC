@@ -15,7 +15,7 @@ namespace QuantTC.Indicators
             Source = source;
             Period = period;
             Source.Update += Source_Update;
-            Title = $"{Source}.EMA{Period}";
+            Name = $"{Source}.EMA{Period}";
         }
 
         private void Source_Update()

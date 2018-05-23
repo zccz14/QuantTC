@@ -26,13 +26,13 @@ namespace QuantTC.Indicators
             SlowPeriod = slowPeriod;
             DiffPeriod = diffPeriod;
             var Title = $"{Source}.MACD({FastPeriod}, {SlowPeriod}, {DiffPeriod})";
-            Fast = new EMA(Source, FastPeriod) {Title = Title + ".Fast"};
-            Slow = new EMA(Source, SlowPeriod) {Title = Title + ".Slow"};
-            Diff = new BinaryOperation<double, double, double>(Fast, Slow, (f, s) => f - s) {Title = Title + ".DIFF"};
-            Dea = new EMA(Diff, DiffPeriod) {Title = Title + ".DEA"};
+            Fast = new EMA(Source, FastPeriod) {Name = Title + ".Fast"};
+            Slow = new EMA(Source, SlowPeriod) {Name = Title + ".Slow"};
+            Diff = new BinaryOperation<double, double, double>(Fast, Slow, (f, s) => f - s) {Name = Title + ".DIFF"};
+            Dea = new EMA(Diff, DiffPeriod) {Name = Title + ".DEA"};
             Macd = new BinaryOperation<double, double, double>(Diff, Dea, (f, s) => 2 * (f - s))
             {
-                Title = Title + ".MACD"
+                Name = Title + ".MACD"
             };
             Diff.Update += Main;
             Dea.Update += Main;

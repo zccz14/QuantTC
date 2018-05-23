@@ -43,7 +43,7 @@ namespace QuantTC.Indicators.Generic
         public event Action Update;
 
         /// <inheritdoc />
-        public string Title { get; set; }
+        public string Name { get; set; }
 
         public IEnumerable<ITreeView> GetNexts() =>
             Update?.GetInvocationList().Select(x => x.Target).OfType<ITreeView>() ?? Enumerable.Empty<ITreeView>();
@@ -57,11 +57,11 @@ namespace QuantTC.Indicators.Generic
         /// <typeparam name="T1">Source Type</typeparam>
         /// <typeparam name="T2">Target Type</typeparam>
         /// <param name="source">Source Indicator</param>
-        /// <param name="title">Title</param>
+        /// <param name="title">Name</param>
         /// <param name="selector">Select Function</param>
         public static LiveSelector<T1, T2> LiveSelect<T1, T2>(this IIndicator<T1> source, string title,
             Func<T1, int, T2> selector) =>
-            new LiveSelector<T1, T2>(source, selector) {Title = title};
+            new LiveSelector<T1, T2>(source, selector) {Name = title};
 
         /// <summary>
         /// Build a live selector

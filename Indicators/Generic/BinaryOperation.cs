@@ -16,7 +16,7 @@ namespace QuantTC.Indicators.Generic
             Operator = @operator;
             Source1.Update += Calc;
             Source2.Update += Calc;
-            Title = $"Op({source1}, {source2})";
+            Name = $"Op({source1}, {source2})";
         }
 
         private void Calc()

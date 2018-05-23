@@ -1,7 +1,7 @@
 ﻿namespace QuantTC.Statistics.Window
 {
     /// <inheritdoc />
-    public interface IClosingCondition : ITitle
+    public interface IClosingCondition : INamedConcept
     {
         /// <summary>
         /// Should Close Window started from [start] at [end]?

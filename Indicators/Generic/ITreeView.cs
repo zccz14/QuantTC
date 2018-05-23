@@ -2,7 +2,7 @@
 
 namespace QuantTC.Indicators.Generic
 {
-    public interface ITreeView: ITitle
+    public interface ITreeView: INamedConcept
     {
         IEnumerable<ITreeView> GetNexts();
     }

@@ -6,7 +6,7 @@ using System.Linq;
 namespace QuantTC.Indicators.Generic
 {
     /// <inheritdoc />
-    public abstract class Indicator : IIndicator, ITitle, ITreeView
+    public abstract class Indicator : IIndicator, INamedConcept, ITreeView
     {
         /// <inheritdoc />
         public virtual event Action Update;
@@ -23,14 +23,14 @@ namespace QuantTC.Indicators.Generic
         public IEnumerable<object> Followers =>
             Update?.GetInvocationList().Select(inv => inv.Target) ?? Enumerable.Empty<object>();
 
-        public string Title { get; set; }
+        public string Name { get; set; }
 
         public IEnumerable<ITreeView> GetNexts() =>
             Update?.GetInvocationList().Select(x => x.Target).OfType<ITreeView>() ?? Enumerable.Empty<ITreeView>();
 
         public override string ToString()
         {
-            return Title ?? $"[Anonymous]{base.ToString()}";
+            return Name ?? $"[Anonymous]{base.ToString()}";
         }
     }
 

@@ -3,7 +3,7 @@
 namespace QuantTC.Statistics.Window
 {
     /// <inheritdoc />
-    public interface ISubject : ITitle
+    public interface ISubject : INamedConcept
     {
         /// <summary>
         /// Get window into an object

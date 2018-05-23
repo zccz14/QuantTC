@@ -1,7 +1,7 @@
 ﻿namespace QuantTC.Statistics.Window
 {
     /// <inheritdoc />
-    public interface ISummary : ITitle
+    public interface ISummary : INamedConcept
     {
         /// <summary>
         /// Get into summary
