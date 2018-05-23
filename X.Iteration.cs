@@ -21,9 +21,9 @@ namespace QuantTC
         /// <param name="right"></param>
         /// <seealso cref="Range"/>
         /// <seealso cref="RangeR"/>
-        public static IEnumerable<int> RangeL(int left, int right)
+        public static IEnumerable<int> RangeL(int left, int right, int step = 1)
         {
-            for (var i = left; i < right; i++)
+            for (var i = left; i < right; i += step)
             {
                 yield return i;
             }
@@ -36,9 +36,9 @@ namespace QuantTC
         /// <param name="right"></param>
         /// <seealso cref="Range"/>
         /// <seealso cref="RangeL"/>
-        public static IEnumerable<int> RangeR(int left, int right)
+        public static IEnumerable<int> RangeR(int left, int right, int step = 1)
         {
-            for (var i = right - 1; i >= left; i--)
+            for (var i = right - 1; i >= left; i -= step)
             {
                 yield return i;
             }

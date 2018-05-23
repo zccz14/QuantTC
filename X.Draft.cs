@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace QuantTC
 {
@@ -16,6 +18,32 @@ namespace QuantTC
                 action(obj);
             }
         }
+
+        /// <summary>
+        /// An alias of foreach
+        /// </summary>
+        public static void ForEach<T>(this IEnumerable<T> source, Action<T, int> action)
+        {
+            var idx = 0;
+            foreach (var obj in source)
+            {
+                action(obj, idx);
+                idx++;
+            }
+        }
+
+        /// <summary>
+        /// An alias of foreach
+        /// </summary>
+        public static void ForEach<T>(this IReadOnlyList<T> source, Action<T, int> action)
+        {
+            var cnt = source.Count;
+            for (var i = 0; i < cnt; i++)
+            {
+                action(source[i], i);
+            }
+        }
+
 
         /// <summary>
         /// tuple (element, counter), counter started from 0
@@ -157,6 +185,16 @@ namespace QuantTC
         /// <param name="u">Upper Bound</param>
         /// <returns></returns>
         public static bool IsBetween(this double v, double l, double u) => l <= v && v <= u;
+
+        /// <summary>
+        /// Judge if a value is between l and u : [l, u]
+        /// </summary>
+        /// <param name="v"></param>
+        /// <param name="l">Lower Bound</param>
+        /// <param name="u">Upper Bound</param>
+        /// <returns></returns>
+        [Pure]
+        public static bool IsBetween<T>(this IComparable<T> v, T l, T u) => v.CompareTo(l) >= 0 && v.CompareTo(u) <= 0;
 
         /// <summary>
         /// Used in Indicators' Count Sync
