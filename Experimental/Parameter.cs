@@ -6,18 +6,25 @@ namespace QuantTC.Experimental
 {
     public class Parameter : IParameter
     {
-
+        /// <inheritdoc />
         public string Name { get; set; }
+        /// <inheritdoc />
         public Type Type { get; set; }
+        /// <inheritdoc />
         public IDomain Domain { get; set; }
+        /// <inheritdoc />
         public IIteratorList Values { get; set; }
+        /// <inheritdoc />
         public int Priority { get; set; }
 
         private Func<object, object> Getter { get; set; }
         private Action<object, object> Setter { get; set; }
 
+        /// <inheritdoc />
         public object GetValue(object obj) => Getter(obj);
+        /// <inheritdoc />
         public void SetValue(object obj, object value) => Setter(obj, value);
+        /// <inheritdoc />
         public IModel Model { get; set; }
 
         /// <summary>
@@ -70,8 +77,24 @@ namespace QuantTC.Experimental
             {
                 values = new IntIteratorList(Convert.ToInt32(attr.Lower), Convert.ToInt32(attr.Upper),
                     Convert.ToInt32(attr.Step));
-            } else if (type == typeof(double))
+            }
+            else if (type == typeof(double))
             {
+                if (attr.Lower == null)
+                {
+                    attr.Lower = short.MinValue;
+                }
+
+                if (attr.Upper == null)
+                {
+                    attr.Upper = short.MaxValue;
+                }
+
+                if (attr.Step == null)
+                {
+                    attr.Step = 1;
+                }
+
                 values = new DoubleIteratorList(Convert.ToDouble(attr.Lower), Convert.ToDouble(attr.Upper), Convert.ToDouble(attr.Step));
             }
             else

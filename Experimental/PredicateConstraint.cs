@@ -9,7 +9,7 @@ namespace QuantTC.Experimental
         public int Priority { get; set; }
         public Func<object, bool> Predicate { get; set; }
 
-        public bool Test(object obj) => Predicate(obj);
+        public bool Test(object activeModel) => Predicate(activeModel);
         public IModel Model { get; set; }
     }
 }

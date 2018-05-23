@@ -9,5 +9,7 @@ namespace QuantTC.Experimental
     public class ModelAttribute : Attribute, INamedConcept
     {
         public string Name { get; set; }
+
+        public bool Ignore { get; set; }
     }
 }

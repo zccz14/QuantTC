@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
 
 namespace QuantTC.Experimental
 {
@@ -7,28 +9,26 @@ namespace QuantTC.Experimental
         public static object Activate(this IModel model) =>
             Activator.CreateInstance(model.Type, 0, null, null, null, null);
 
-        private static object ConsoleLock = new object();
-        public static void PrintDetails(this IModel model)
+        public static void PrintDetails(this IModel model, TextWriter stream)
         {
-            lock (ConsoleLock)
+            lock (stream)
             {
-                Console.WriteLine($"Model: {model.Name}");
-                Console.WriteLine($"with {model.Parameters.Count} parameter(s):");
+                stream.WriteLine($"Model: {model.Name}");
+                stream.WriteLine($"with {model.Parameters.Count} parameter(s):");
                 model.Parameters.ForEach(p =>
                 {
-                    Console.WriteLine($"\t{p.Name}: {p.Type.Name} in {p.Domain.Lower}, {p.Domain.Upper} ({p.Domain.SizeFactor})");
+                    stream.WriteLine($"\t{p.Name}: {p.Type.Name} in {p.Values.First()}, {p.Values.Last()}, ({p.Values.Size})");
                 });
-                Console.WriteLine($"max {model.Objectives.Count} objective(s)");
+                stream.WriteLine($"max {model.Objectives.Count} objective(s)");
                 model.Objectives.ForEach(o =>
                 {
-                    Console.WriteLine($"\t{o.Name}: {o.Type.Name}");
+                    stream.WriteLine($"\t{o.Name}: {o.Type.Name}");
                 });
-                Console.WriteLine($"s.t. {model.Constraints.Count} constraint(s)");
+                stream.WriteLine($"s.t. {model.Constraints.Count} constraint(s)");
                 model.Constraints.ForEach(p =>
                 {
-                    Console.WriteLine($"\t{p.Name}: {p.Description}");
+                    stream.WriteLine($"\t{p.Name}: {p.Description}");
                 });
-
             }
         }
     }

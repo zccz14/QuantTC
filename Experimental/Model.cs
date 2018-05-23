@@ -27,10 +27,12 @@ namespace QuantTC.Experimental
         {
             var tAttr = type.GetCustomAttribute<ModelAttribute>();
             if (tAttr == null) return null;
+            if (tAttr.Ignore) return null;
+            var name = tAttr.Name ?? type.Name;
             var model = new Model
             {
                 Type = type,
-                Name = tAttr.Name
+                Name = name
             };
             var members = type.GetMembers();
             foreach (var member in members)
@@ -41,13 +43,6 @@ namespace QuantTC.Experimental
                     if (p != null)
                     {
                         model._parameters.Add(p);
-                        model._constraints.Add(new PredicateConstraint()
-                        {
-                            Description = p.Domain.Description,
-                            Name = $"Domain of {p.Name}",
-                            Predicate = obj => p.Domain.IsValid(p.GetValue(obj)),
-                            Priority = int.MinValue
-                        });
                     }
                 }
 
@@ -60,9 +55,9 @@ namespace QuantTC.Experimental
                     }
                 }
 
-                if (member.GetCustomAttribute<ObjectiveFunctionAttribute>() != null)
+                if (member.GetCustomAttribute<ObjectiveAttribute>() != null)
                 {
-                    var o = Objective.Create(member);
+                    var o = Objective.Create(model, member);
                     if (o != null)
                     {
                         model._objectives.Add(o);
@@ -108,6 +103,5 @@ namespace QuantTC.Experimental
         /// <inheritdoc />
         public IReadOnlyList<IObjective> Objectives => _objectives;
 
-        public double Precision { get; set; }
     }
 }

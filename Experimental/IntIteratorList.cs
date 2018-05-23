@@ -4,19 +4,28 @@ using System.Collections.Generic;
 
 namespace QuantTC.Experimental
 {
-    public class IntIteratorList : IReadOnlyList<int>, IIteratorList
+    public class IntIteratorList : IReadOnlyList<int>, IReadOnlyList<object>, IIteratorList
     {
+        private readonly int _size;
+
         public IntIteratorList(int lower, int upper, int step)
         {
             Lower = lower;
             Upper = upper;
             Step = step;
+            _size = (Upper - Lower - 1) / Step + 1;
         }
 
-        public int Lower { get; }
-        public int Upper { get; }
-        public int Step { get; }
+        private int Lower { get; }
+        private int Upper { get; }
+        private int Step { get; }
 
+        IEnumerator<object> IEnumerable<object>.GetEnumerator()
+        {
+            for (var i = Lower; i < Upper; i += Step) yield return i;
+        }
+
+        /// <inheritdoc />
         public IEnumerator<int> GetEnumerator()
         {
             for (var i = Lower; i < Upper; i += Step) yield return i;
@@ -24,11 +33,18 @@ namespace QuantTC.Experimental
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-        public int Count => (Upper - Lower - 1) / Step + 1;
+        /// <inheritdoc />
+        public int Count => _size;
 
-        public long Size => (-1L + Upper - Lower) / Step + 1;
+        /// <inheritdoc />
+        public int Size => _size;
+
+        /// <inheritdoc />
         public object GetValue(int index) => Lower + index * Step;
 
+        /// <inheritdoc />
         public int this[int index] => Lower + index * Step;
+
+        object IReadOnlyList<object>.this[int index] => Lower + index * Step;
     }
 }

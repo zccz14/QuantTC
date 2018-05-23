@@ -13,22 +13,32 @@ namespace QuantTC.Experimental
             if (enableTrue) Values.Add(true);
         }
 
+        IEnumerator<object> IEnumerable<object>.GetEnumerator()
+        {
+            foreach (var value in Values)
+            {
+                yield return value;
+            }
+        }
+
         /// <inheritdoc />
         public IEnumerator<bool> GetEnumerator() => Values.GetEnumerator();
 
         /// <inheritdoc />
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-        /// <inheritdoc />
+        /// <inheritdoc cref="IReadOnlyList{T}" />
         public int Count => Values.Count;
 
         /// <inheritdoc />
         public bool this[int index] => Values[index];
 
         /// <inheritdoc />
-        public long Size => Values.Count;
+        public int Size => Values.Count;
 
         /// <inheritdoc />
         public object GetValue(int index) => Values[index];
+
+        object IReadOnlyList<object>.this[int index] => Values[index];
     }
 }
