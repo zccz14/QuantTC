@@ -2,11 +2,14 @@
 
 namespace QuantTC.Data
 {
-    /// <inheritdoc cref="IPrice"/>
-    public class Price : IPrice
+    /// <inheritdoc cref="IBarPrice"/>
+    public class BarPrice : IBarPrice
     {
         ///	<inheritdoc />
         public DateTime DateTime { get; set; }
+
+        ///	<inheritdoc />
+        public double Price => Close;
 
         ///	<inheritdoc />
         public double Open { get; set; }
@@ -30,7 +33,7 @@ namespace QuantTC.Data
         /// Construct a price instance from string array
         /// </summary>
         /// <param name="data">[Datetime, Open, High, Low, Close, Volume, OpenInterest]</param>
-        public static Price FromStringArray(string[] data) => new Price
+        public static BarPrice FromStringArray(string[] data) => new BarPrice
         {
             DateTime = DateTime.Parse(data[0]),
             Open = double.Parse(data[1]),
@@ -46,7 +49,7 @@ namespace QuantTC.Data
         /// </summary>
         /// <param name="data">{Datetime},{Open},{High},{Low},{Close},{Volume},{OpenInterest}</param>
         [Obsolete("Using Parse instand")]
-        public static Price FromString(string data) => FromStringArray(data.Split(','));
+        public static BarPrice FromString(string data) => FromStringArray(data.Split(','));
 
         /// <summary>
         /// Converts the string representation of {Datetime},{Open},{High},{Low},{Close},{Volume},{OpenInterest} to its Price equivalent.
@@ -56,6 +59,6 @@ namespace QuantTC.Data
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="FormatException"></exception>
         /// <exception cref="OverflowException"></exception>
-        public static Price Parse(string s) => FromStringArray(s.Split(','));
+        public static BarPrice Parse(string s) => FromStringArray(s.Split(','));
     }
 }

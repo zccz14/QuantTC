@@ -13,7 +13,7 @@ namespace QuantTC.Indicators
     /// 
     /// [[Datetime, Open, High, Low, Close, Volume, OpenInterest]]
     /// </summary>
-    public sealed class CsvBarList : Indicator<IPrice>, IDisposable
+    public sealed class CsvBarList : Indicator<IBarPrice>, IDisposable
     {
         /// <inheritdoc />
         public CsvBarList(string path, bool header = true)
@@ -21,9 +21,10 @@ namespace QuantTC.Indicators
             Data.AddRange(File.ReadAllLines(path).Skip(header ? 1 : 0).Select(Datum.FromString));
         }
 
-        private class Datum : IPrice
+        private class Datum : IBarPrice
         {
             public DateTime DateTime { get; private set; }
+            public double Price => Close;
             public double Open { get; private set; }
             public double High { get; private set; }
             public double Low { get; private set; }

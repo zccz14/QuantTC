@@ -6,9 +6,38 @@ using QuantTC.Indicators.Generic;
 namespace QuantTC.Data
 {
     /// <summary>
+    /// Price is Timeliness
+    /// </summary>
+    public interface IPrice
+    {
+        /// <summary>
+        /// DateTime (at start)
+        /// </summary>
+        DateTime DateTime { get; }
+
+        /// <summary>
+        /// The Lastest/Meaningful Price
+        /// </summary>
+        double Price { get; }
+    }
+    /// <summary>
+    /// The Behavior of Market responding to the price
+    /// </summary>
+    public interface IPriceMarket: IPrice
+    {
+        /// <summary>
+        /// Volume (in lots)
+        /// </summary>
+        int Volume { get; }
+        /// <summary>
+        /// Open Interest (in lots)
+        /// </summary>
+        int OpenInterest { get; }
+    }
+    /// <summary>
     /// the Price Datum with Open Price
     /// </summary>
-    public interface IPriceO
+    public interface IPriceO: IPrice
     {
         /// <summary>
         /// Open Price
@@ -19,7 +48,7 @@ namespace QuantTC.Data
     /// <summary>
     /// the Price Datum with High Price
     /// </summary>
-    public interface IPriceH
+    public interface IPriceH: IPrice
     {
         /// <summary>
         /// High Price
@@ -30,7 +59,7 @@ namespace QuantTC.Data
     /// <summary>
     /// the Price Datum with Low Price
     /// </summary>
-    public interface IPriceL
+    public interface IPriceL: IPrice
     {
         /// <summary>
         /// Low Price
@@ -41,7 +70,7 @@ namespace QuantTC.Data
     /// <summary>
     /// the Price Datum with Close Price
     /// </summary>
-    public interface IPriceC
+    public interface IPriceC: IPrice
     {
         /// <summary>
         /// Close Price
@@ -154,24 +183,13 @@ namespace QuantTC.Data
     {
     }
 
-    /// <inheritdoc />
+    /// <inheritdoc cref="IPriceOHLC" />
+    /// <inheritdoc cref="IPriceMarket" />
     /// <summary>
     /// The Price Datum with Open, High, Low, Close and other items
     /// </summary>
-    public interface IPrice : IPriceOHLC
+    public interface IBarPrice : IPriceOHLC, IPriceMarket
     {
-        /// <summary>
-        /// DateTime (at start)
-        /// </summary>
-        DateTime DateTime { get; }
-        /// <summary>
-        /// Volume (in lots)
-        /// </summary>
-        int Volume { get; }
-        /// <summary>
-        /// Open Interest (in lots)
-        /// </summary>
-        int OpenInterest { get; }
     }
 
     public static partial class X

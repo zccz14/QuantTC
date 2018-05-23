@@ -1,4 +1,4 @@
-﻿using QuantTC.Data;
+﻿using QuantTC.Backtesting;
 using QuantTC.Indicators.Generic;
 
 namespace QuantTC.Indicators.Collectors

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Linq;
+using QuantTC.Backtesting;
 using QuantTC.Data;
 using QuantTC.Indicators.Generic;
 
@@ -9,7 +9,7 @@ namespace QuantTC.Indicators.Collectors
     public class OrderAgent : Indicator<IOrder>
     {
         /// <inheritdoc />
-        public OrderAgent(IIndicator<IPrice> market, IIndicator<int> model)
+        public OrderAgent(IIndicator<IBarPrice> market, IIndicator<int> model)
         {
             Market = market;
             Model = model;
@@ -73,7 +73,7 @@ namespace QuantTC.Indicators.Collectors
 
         public bool IsEnabled { get; private set; }
 
-        private IIndicator<IPrice> Market { get; }
+        private IIndicator<IBarPrice> Market { get; }
         private IIndicator<int> Model { get; }
     }
 }

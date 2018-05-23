@@ -8,10 +8,10 @@ using QuantTC.Indicators.Generic;
 namespace QuantTC.Indicators
 {
     /// <inheritdoc />
-    public class Simulator : IIndicator<IPrice>, ITreeView
+    public class Simulator : IIndicator<IBarPrice>, ITreeView
     {
         /// <inheritdoc />
-        public Simulator(IIndicator<IPrice> source)
+        public Simulator(IIndicator<IBarPrice> source)
         {
             Source = source;
             Source.Update += Resume;
@@ -21,7 +21,7 @@ namespace QuantTC.Indicators
         public event Action Update;
 
         /// <inheritdoc />
-        public IEnumerator<IPrice> GetEnumerator() => Source.Take(Count).GetEnumerator();
+        public IEnumerator<IBarPrice> GetEnumerator() => Source.Take(Count).GetEnumerator();
 
         /// <inheritdoc />
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
@@ -35,9 +35,9 @@ namespace QuantTC.Indicators
         public int Index => Count - 1;
 
         /// <inheritdoc />
-        public IPrice this[int index] => Source[index];
+        public IBarPrice this[int index] => Source[index];
 
-        private IIndicator<IPrice> Source { get; }
+        private IIndicator<IBarPrice> Source { get; }
 
         /// <summary>
         /// Replay Source
@@ -61,7 +61,7 @@ namespace QuantTC.Indicators
         }
 
         /// <inheritdoc />
-        public string Title { get; set; }
+        public string Name { get; set; }
 
         /// <inheritdoc />
         public IEnumerable<ITreeView> GetNexts() =>
