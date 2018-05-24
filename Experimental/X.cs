@@ -13,22 +13,25 @@ namespace QuantTC.Experimental
         {
             lock (stream)
             {
-                stream.WriteLine($"Model: {model.Name}");
-                stream.WriteLine($"with {model.Parameters.Count} parameter(s):");
+                stream.WriteLine($"[Model] {model.Name}({string.Join(", ", model.Parameters.Select(p => p.Name))})");
+                stream.WriteLine($"where {model.Parameters.Count} parameter(s):");
                 model.Parameters.ForEach(p =>
                 {
-                    stream.WriteLine($"\t{p.Name}: {p.Type.Name} in {p.Values.First()}, {p.Values.Last()}, ({p.Values.Size})");
+                    stream.WriteLine($"\t{p.Name}: {p.Type.Name} in {p.Values.First()}, {p.Values.Last()}, (x{p.Values.Count})");
                 });
-                stream.WriteLine($"max {model.Objectives.Count} objective(s)");
-                model.Objectives.ForEach(o =>
+                stream.WriteLine($"max [{string.Join(", ", model.Objectives.Select(o => o.Name))}]");
+                if (model.Constraints.Count == 0)
                 {
-                    stream.WriteLine($"\t{o.Name}: {o.Type.Name}");
-                });
-                stream.WriteLine($"s.t. {model.Constraints.Count} constraint(s)");
-                model.Constraints.ForEach(p =>
+                    stream.WriteLine("with no constraint");
+                }
+                else
                 {
-                    stream.WriteLine($"\t{p.Name}: {p.Description}");
-                });
+                    stream.WriteLine($"s.t. {model.Constraints.Count} constraint(s): ");
+                    model.Constraints.ForEach(p =>
+                    {
+                        stream.WriteLine($"\t{p.Name}: {p.Description}");
+                    });
+                }
             }
         }
     }

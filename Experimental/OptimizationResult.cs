@@ -17,10 +17,12 @@ namespace QuantTC.Experimental
         {
             lock (stream)
             {
-                stream.WriteLine($"Optimize {Model}: Best Score {BestScore}");
+                stream.WriteLine($"Result of {Model.Name}:");
+                stream.WriteLine($"\tBest Score: {BestScore}");
+                stream.WriteLine($"\tBest Solutions: ");
                 Solutions.Take(100).ForEach(solution =>
                     stream.WriteLine(
-                        $"{Model.Name}({string.Join(",", solution.Arguments)}) = [{string.Join(",", solution.Objectives)}] => ({solution.Score})"));
+                        $"\t\t{Model.Name}({string.Join(", ", solution.Arguments)}) = [{string.Join(", ", solution.Objectives)}] => ({solution.Score})"));
             }
         }
     }

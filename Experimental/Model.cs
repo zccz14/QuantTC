@@ -57,7 +57,7 @@ namespace QuantTC.Experimental
 
                 if (member.GetCustomAttribute<ObjectiveAttribute>() != null)
                 {
-                    var o = Objective.Create(model, member);
+                    var o = MethodObjective.Create(model, member);
                     if (o != null)
                     {
                         model._objectives.Add(o);

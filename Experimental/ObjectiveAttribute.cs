@@ -8,7 +8,7 @@ namespace QuantTC.Experimental
     /// Mark Objective Function:
     /// the more the better
     /// </summary>
-    [AttributeUsage(AttributeTargets.Method)]
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Property)]
     public class ObjectiveAttribute : Attribute, INamedConcept
     {
         /// <inheritdoc />
