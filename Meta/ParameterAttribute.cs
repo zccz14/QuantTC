@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace QuantTC.Experimental
+namespace QuantTC.Meta
 {
     /// <inheritdoc cref="Attribute"/>
     /// <inheritdoc cref="INamedConcept"/>
@@ -12,10 +12,12 @@ namespace QuantTC.Experimental
         /// <summary>
         /// Serialized Domain
         /// </summary>
+        [Obsolete]
         public string Domain { get; set; }
         /// <summary>
         /// Priority (the less the first)
         /// </summary>
+        [Obsolete]
         public int Priority { get; set; }
 
         public object Upper { get; set; }

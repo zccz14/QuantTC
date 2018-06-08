@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace QuantTC.Experimental
+namespace QuantTC.Meta
 {
-    /// <inheritdoc />
     /// <summary>
     /// Meta Information of Model
     /// </summary>
     public interface IModel : INamedConcept
     {
-        /// <summary>
-        /// Type of the referenced model
-        /// </summary>
-        Type Type { get; }
         /// <summary>
         /// List of Meta of Parameters
         /// </summary>

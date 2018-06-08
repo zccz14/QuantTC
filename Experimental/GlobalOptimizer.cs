@@ -1,12 +1,15 @@
-﻿namespace QuantTC.Experimental
+﻿using System;
+
+namespace QuantTC.Experimental
 {
+    [Obsolete]
     public class GlobalOptimizer
     {
-        public GlobalOptimizer(IModel model)
+        public GlobalOptimizer(ITypedModel typedModel)
         {
-            Model = model;
+            TypedModel = typedModel;
         }
 
-        private IModel Model { get; }
+        private ITypedModel TypedModel { get; }
     }
 }

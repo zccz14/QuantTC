@@ -1,13 +1,25 @@
 ﻿using System;
 using System.Reflection;
+using QuantTC.Meta;
 
 namespace QuantTC.Experimental
 {
     /// <inheritdoc />
-    public class MethodObjective : IObjective
+    /// 
+    [Obsolete]
+    public class MethodTypedObjective : ITypedObjective
     {
         /// <inheritdoc />
         public string Name { get; set; }
+
+        public double Evaluate(Array arguments)
+        {
+            var obj = TypedModel.Activate();
+            TypedModel.TypedParameters.ForEach((p, i) => p.SetValue(obj, arguments.GetValue(i)));
+            return Eval(obj);
+        }
+
+        public IModel Model => TypedModel;
 
         /// <inheritdoc />
         public Type Type { get; set; }
@@ -16,7 +28,7 @@ namespace QuantTC.Experimental
         public int Priority { get; set; }
 
         /// <inheritdoc />
-        public IModel Model { get; set; }
+        public ITypedModel TypedModel { get; set; }
 
         private MethodInfo Method { get; set; }
 
@@ -26,63 +38,70 @@ namespace QuantTC.Experimental
             return Convert.ToDouble(Method.Invoke(obj, null));
         }
 
-        public static MethodObjective Create(IModel model, MemberInfo member)
+        public static MethodTypedObjective Create(ITypedModel typedModel, MemberInfo member)
         {
             switch (member)
             {
                 case MethodInfo method:
-                    return Create(model, method);
+                    return Create(typedModel, method);
                 case PropertyInfo property:
-                    return Create(model, property);
+                    return Create(typedModel, property);
                 default:
                     return null;
             }
         }
 
-        public static MethodObjective Create(IModel model, MethodInfo methodInfo)
+        public static MethodTypedObjective Create(ITypedModel typedModel, MethodInfo methodInfo)
         {
             var attr = methodInfo.GetCustomAttribute<ObjectiveAttribute>();
             var name = attr.Name ?? methodInfo.Name;
             var type = methodInfo.ReturnType;
             if (type != typeof(double))
             {
-                Console.WriteLine($"Analyzer Warning: type of Constraint {name} must be double. (in {model})");
+                Console.WriteLine($"Analyzer Warning: type of Constraint {name} must be double. (in {typedModel})");
                 return null;
             }
-            return new MethodObjective
+            return new MethodTypedObjective
             {
                 Name = name,
                 Type = type,
                 Method = methodInfo,
                 Priority = attr.Priority,
-                Model = model
+                TypedModel = typedModel
             };
         }
-        public static MethodObjective Create(IModel model, PropertyInfo property)
+        public static MethodTypedObjective Create(ITypedModel typedModel, PropertyInfo property)
         {
             var attr = property.GetCustomAttribute<ObjectiveAttribute>();
             var name = attr.Name ?? property.Name;
             var type = property.PropertyType;
             if (type != typeof(double))
             {
-                Console.WriteLine($"Analyzer Warning: type of Constraint {name} must be double. (in {model})");
+                Console.WriteLine($"Analyzer Warning: type of Constraint {name} must be double. (in {typedModel})");
                 return null;
             }
-            return new MethodObjective
+            return new MethodTypedObjective
             {
                 Name = name,
                 Type = type,
                 Priority = attr.Priority,
-                Model = model,
+                TypedModel = typedModel,
                 Method = property.GetMethod
             };
         }
     }
     /// <inheritdoc />
-    public class PropertyObjective : IObjective
+    public class PropertyTypedObjective : ITypedObjective
     {
         /// <inheritdoc />
         public string Name { get; set; }
+
+        public double Evaluate(Array arguments)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IModel Model => TypedModel;
 
         /// <inheritdoc />
         public Type Type { get; set; }
@@ -91,40 +110,40 @@ namespace QuantTC.Experimental
         public int Priority { get; set; }
 
         /// <inheritdoc />
-        public IModel Model { get; set; }
+        public ITypedModel TypedModel { get; set; }
 
         private PropertyInfo Property { get; set; }
 
         /// <inheritdoc />
         public double Eval(object obj) => Convert.ToDouble(Property.GetValue(obj));
 
-        public static PropertyObjective Create(IModel model, MemberInfo member)
+        public static PropertyTypedObjective Create(ITypedModel typedModel, MemberInfo member)
         {
             switch (member)
             {
                 case PropertyInfo property:
-                    return Create(model, property);
+                    return Create(typedModel, property);
                 default:
                     return null;
             }
         }
 
-        public static PropertyObjective Create(IModel model, PropertyInfo property)
+        public static PropertyTypedObjective Create(ITypedModel typedModel, PropertyInfo property)
         {
             var attr = property.GetCustomAttribute<ObjectiveAttribute>();
             var name = attr.Name ?? property.Name;
             var type = property.PropertyType;
             if (type != typeof(double))
             {
-                Console.WriteLine($"Analyzer Warning: type of Constraint {name} must be double. (in {model})");
+                Console.WriteLine($"Analyzer Warning: type of Constraint {name} must be double. (in {typedModel})");
                 return null;
             }
-            return new PropertyObjective
+            return new PropertyTypedObjective
             {
                 Name = name,
                 Type = type,
                 Priority = attr.Priority,
-                Model = model
+                TypedModel = typedModel
             };
         }
     }

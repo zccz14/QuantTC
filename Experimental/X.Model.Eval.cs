@@ -1,25 +1,45 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using QuantTC.Meta;
 
 namespace QuantTC.Experimental
 {
     public static partial class X
     {
+
         /// <summary>
         /// Evaluate the model with arguments
         /// </summary>
         /// <param name="model"></param>
         /// <param name="arguments"></param>
         /// <returns></returns>
-        public static (bool, double[], bool[]) Eval(this IModel model, params object[] arguments)
+        public static IEvaluationResult Evaluate
+            (this IModel model, Array arguments)
         {
-            // object initialization
-            var obj = model.Activate();
-            arguments.ForEach((arg, i) => model.Parameters[i].SetValue(obj, arg));
-            // test feasible
-            var tests = model.Constraints.Select(c => c.Test(obj)).ToArray();
-            if (!tests.All(r => r)) return (false, null, tests); // not feasible
-            // Evaluate Objectives
-            return (true, model.Objectives.Select(o => o.Eval(obj)).ToArray(), null);
+            // Tests Feasibilities
+            var tests = model.Constraints
+                .Select(c => c.Test(arguments))
+                .ToArray();
+            var isFeasible = tests.All(r => r);
+            if (!isFeasible)
+            {
+                return new EvaluationResult
+                {
+                    IsFeasible = false,
+                    Feasibilities = tests,
+                    Objectives = null
+                };
+            }
+            // Evaluates Objectives, if feasible
+            var objs = model.Objectives
+                .Select(o => o.Evaluate(arguments))
+                .ToArray();
+            return new EvaluationResult
+            {
+                IsFeasible = true,
+                Objectives = objs,
+                Feasibilities = tests
+            };
         }
     }
 }

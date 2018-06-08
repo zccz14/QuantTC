@@ -1,9 +1,8 @@
 ﻿using System;
-using System.IO;
-using System.Reflection;
 
 namespace QuantTC.Experimental
 {
+    [Obsolete]
     public interface IDomain
     {
         string Description { get; }

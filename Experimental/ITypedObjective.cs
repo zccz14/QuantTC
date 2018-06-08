@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Reflection;
+using QuantTC.Meta;
 
 namespace QuantTC.Experimental
 {
@@ -7,7 +7,8 @@ namespace QuantTC.Experimental
     /// <summary>
     /// Meta Information of Objective function
     /// </summary>
-    public interface IObjective : INamedConcept
+    [Obsolete]
+    public interface ITypedObjective : IObjective
     {
         /// <summary>
         /// Type of Objective Function
@@ -16,10 +17,5 @@ namespace QuantTC.Experimental
 //        MethodInfo Method { get; }
         int Priority { get; }
         double Eval(object obj);
-
-        /// <summary>
-        /// Backward Reference of Model
-        /// </summary>
-        IModel Model { get; }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 using QuantTC.Data;
 using QuantTC.Indicators.Generic;
 
-namespace QuantTC.Experimental
+namespace QuantTC.Meta
 {
     /// <summary>
     /// 策略

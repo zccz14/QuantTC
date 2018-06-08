@@ -1,26 +1,29 @@
 ﻿using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using QuantTC.Meta;
 
 namespace QuantTC.Experimental
 {
     public class ArgumentsProducer
     {
-        public ArgumentsProducer(IModel model, ConcurrentQueue<object[]> pool)
+        public ArgumentsProducer(IModel model, ConcurrentQueue<object[]> pool, int threadCount)
         {
             Model = model;
             N = Model.Parameters.Count;
             Current = new int[N];
             Totals = Model.Parameters.Select(p => p.Values.Count).ToArray();
             Pool = pool;
+            ThreadCount = threadCount;
+            Tasks = QuantTC.X.Range(0, ThreadCount).Select(i => new Task(() => MProduce(ThreadCount, i))).ToArray();
+//            Tasks = QuantTC.X.Range(0, ThreadCount).Select(i => new Task(Produce)).ToArray();
         }
 
         private IModel Model { get; }
         private int N { get; }
         private ConcurrentQueue<object[]> Pool { get; }
-        public int ThreadCount { get; set; }
-        public List<Task> Tasks { get; } = new List<Task>();
+        public int ThreadCount { get; }
+        public Task[] Tasks { get; }
         public int[] Totals { get; }
         public int[] Current { get; }
         public bool IsCompleted { get; private set; }
@@ -61,25 +64,44 @@ namespace QuantTC.Experimental
             }
         }
 
-        public void Update()
+        private void MProduce(int mod, int remain)
         {
-            while (Tasks.Count < ThreadCount)
+            var indices = Enumerable.Repeat(0, N).ToArray();
+            var total = Totals[N - 1];
+            while (true)
             {
-                Tasks.Add(new Task(Produce));
-            }
-
-            foreach (var task in Tasks)
-            {
-                if (!task.IsCompleted)
+                for (var j = remain; j < total; j += mod)
                 {
-                    task.Start();
+                    indices[N - 1] = j;
+                    Pool.Enqueue(indices.Zip(Model.Parameters, (i, p) => p.Values[i]).ToArray());
+                }
+
+                indices[N - 2]++;
+                for (var i = N - 2; i > 0; i--)
+                {
+                    if (indices[i] >= Totals[i])
+                    {
+                        indices[i] = 0;
+                        indices[i - 1]++; // Carry
+                    }
+                    else
+                    {
+                        // Hold on
+                        break;
+                    }
+                }
+
+                if (indices[0] >= Totals[0])
+                {
+                    IsCompleted = true;
+                    break;
                 }
             }
         }
 
         public void Start()
         {
-            foreach (var task in Tasks.Take(ThreadCount))
+            foreach (var task in Tasks)
             {
                 task.Start();
             }

@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace QuantTC.Experimental
 {
-    public class BoolIteratorList : IReadOnlyList<bool>, IIteratorList
+    [Obsolete]
+    public class BoolIteratorList : IReadOnlyList<bool>, IReadOnlyList<object>
     {
         private List<bool> Values { get; } = new List<bool>(2);
 

@@ -32,6 +32,14 @@ namespace QuantTC
             }
         }
 
+        public static IEnumerable<object> AsEnumerable(this Array array)
+        {
+            foreach (var o in array)
+            {
+                yield return o;
+            }
+        }
+
         /// <summary>
         /// An alias of foreach
         /// </summary>
@@ -292,6 +300,42 @@ namespace QuantTC
                 }
             }
             return t;
+        }
+        /// <summary>
+        /// Returns a random floating-point number that is greater than or equal than minValue, and less than maxValue.
+        /// </summary>
+        /// <param name="This"></param>
+        /// <param name="minValue">The inclusive lower bound of the random number returned.</param>
+        /// <param name="maxValue">The exclusive upper bound of the random number returned.</param>
+        /// <returns></returns>
+        public static double NextDouble(this Random This, double minValue, double maxValue) => (maxValue - minValue) * This.NextDouble() + minValue;
+
+        /// <summary>
+        /// Returns a random floating-point number that is greater than or equal than 0.0, and less than maxValue.
+        /// </summary>
+        /// <param name="This"></param>
+        /// <param name="maxValue">The exclusive upper bound of the random number returned.</param>
+        /// <returns></returns>
+        public static double NextDouble(this Random This, double maxValue) => This.NextDouble() * maxValue;
+
+        /// <summary>
+        /// Creates an array from IEnumerable&lt;out T&gt;. Hint the length to alloc array only once.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="This"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        public static T[] ToArray<T>(this IEnumerable<T> This, int length)
+        {
+            var e = This.GetEnumerator();
+            var ret = new T[length];
+            for (var i = 0; i < length; i++)
+            {
+                ret[i] = e.Current;
+                e.MoveNext();
+            }
+            e.Dispose();
+            return ret;
         }
     }
 }

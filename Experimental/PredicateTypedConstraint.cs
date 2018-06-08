@@ -1,10 +1,17 @@
 ﻿using System;
+using QuantTC.Meta;
 
 namespace QuantTC.Experimental
 {
-    public class PredicateConstraint : IConstraint
+    [Obsolete]
+    public class PredicateTypedConstraint : ITypedConstraint
     {
         public string Name { get; set; }
+        public bool Test(Array arguments)
+        {
+            throw new NotImplementedException();
+        }
+
         public string Description { get; set; }
         public int Priority { get; set; }
         public Func<object, bool> Predicate { get; set; }

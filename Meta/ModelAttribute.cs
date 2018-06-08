@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace QuantTC.Experimental
+namespace QuantTC.Meta
 {
     /// <summary>
     /// Model (Marker)
@@ -9,7 +9,5 @@ namespace QuantTC.Experimental
     public class ModelAttribute : Attribute, INamedConcept
     {
         public string Name { get; set; }
-
-        public bool Ignore { get; set; }
     }
 }

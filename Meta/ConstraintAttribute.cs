@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace QuantTC.Experimental
+namespace QuantTC.Meta
 {
     /// <inheritdoc cref="Attribute" />
     /// <summary>
@@ -14,8 +14,9 @@ namespace QuantTC.Experimental
         /// <summary>
         /// 
         /// </summary>
+        [Obsolete]
         public string Description { get; set; }
-
+        [Obsolete]
         public int Priority { get; set; }
     }
 }

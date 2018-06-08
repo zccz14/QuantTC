@@ -1,6 +1,6 @@
 ﻿using QuantTC.Data;
 using QuantTC.Indicators.Generic;
-using QuantTC.Experimental;
+using QuantTC.Meta;
 
 namespace QuantTC.Backtesting
 {

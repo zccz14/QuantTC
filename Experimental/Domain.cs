@@ -2,6 +2,7 @@
 
 namespace QuantTC.Experimental
 {
+    [Obsolete]
     public class Domain : IDomain
     {
         public string Description { get; set; }

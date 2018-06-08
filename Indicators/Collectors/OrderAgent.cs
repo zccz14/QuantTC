@@ -62,7 +62,7 @@ namespace QuantTC.Indicators.Collectors
         }
 
         /// <summary>
-        /// Target Position: The last position that the model indicated
+        /// Target Position: The last position that the typedModel indicated
         /// </summary>
         public int TargetPosition { get; private set; }
 

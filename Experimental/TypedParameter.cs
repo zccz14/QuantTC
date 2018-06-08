@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using QuantTC.Collections;
+using QuantTC.Meta;
 
 namespace QuantTC.Experimental
 {
-    public class Parameter : IParameter
+    [Obsolete]
+    public class TypedParameter : ITypedParameter
     {
         /// <inheritdoc />
         public string Name { get; set; }
@@ -13,7 +17,10 @@ namespace QuantTC.Experimental
         /// <inheritdoc />
         public IDomain Domain { get; set; }
         /// <inheritdoc />
-        public IIteratorList Values { get; set; }
+        public IReadOnlyList<object> Values { get; set; }
+
+        public IModel Model => TypedModel;
+
         /// <inheritdoc />
         public int Priority { get; set; }
 
@@ -25,14 +32,14 @@ namespace QuantTC.Experimental
         /// <inheritdoc />
         public void SetValue(object obj, object value) => Setter(obj, value);
         /// <inheritdoc />
-        public IModel Model { get; set; }
+        public ITypedModel TypedModel { get; set; }
 
         /// <summary>
         /// Create a parameter from MemberInfo (Field / Property)
         /// </summary>
         /// <param name="member"></param>
-        /// <returns>Parameter if member is valid Field / Property, otherwise null</returns>
-        public static Parameter Create(MemberInfo member)
+        /// <returns>TypedParameter if member is valid Field / Property, otherwise null</returns>
+        public static TypedParameter Create(MemberInfo member)
         {
             switch (member)
             {
@@ -48,13 +55,13 @@ namespace QuantTC.Experimental
         /// Create a parameter from MemberInfo (Field / Property)
         /// </summary>
         /// <param name="member"></param>
-        /// <returns>Parameter if member is valid Field / Property, otherwise null</returns>
-        public static Parameter Create(IModel model, MemberInfo member)
+        /// <returns>TypedParameter if member is valid Field / Property, otherwise null</returns>
+        public static TypedParameter Create(ITypedModel typedModel, MemberInfo member)
         {
             var p = Create(member);
             if (p != null)
             {
-                p.Model = model;
+                p.TypedModel = typedModel;
             }
             return p;
         }
@@ -64,18 +71,18 @@ namespace QuantTC.Experimental
         /// </summary>
         /// <param name="field"></param>
         /// <returns></returns>
-        public static Parameter Create(FieldInfo field)
+        public static TypedParameter Create(FieldInfo field)
         {
             var attr = field.GetCustomAttribute<ParameterAttribute>();
             var name = attr.Name ?? field.Name;
             var type = field.FieldType;
             var (lower, upper, factor) = Parse(attr, type);
 
-            IIteratorList values;
+            IReadOnlyList<object> values;
 
             if (type == typeof(int))
             {
-                values = new IntIteratorList(Convert.ToInt32(attr.Lower), Convert.ToInt32(attr.Upper),
+                values = new Int32ArithmeticProgression(Convert.ToInt32(attr.Lower), Convert.ToInt32(attr.Upper),
                     Convert.ToInt32(attr.Step));
             }
             else if (type == typeof(double))
@@ -95,7 +102,7 @@ namespace QuantTC.Experimental
                     attr.Step = 1;
                 }
 
-                values = new DoubleIteratorList(Convert.ToDouble(attr.Lower), Convert.ToDouble(attr.Upper), Convert.ToDouble(attr.Step));
+                values = new DoubleArithmeticProgression(Convert.ToDouble(attr.Lower), Convert.ToDouble(attr.Upper), Convert.ToDouble(attr.Step));
             }
             else
             {
@@ -104,17 +111,15 @@ namespace QuantTC.Experimental
 
             var domain = new Domain
             {
-                Description = attr.Domain,
                 Upper = upper,
                 Lower = lower,
                 SizeFactor = factor
             };
-            return new Parameter
+            return new TypedParameter
             {
                 Name = name,
                 Type = type,
                 Domain = domain,
-                Priority = attr.Priority,
                 Getter = field.GetValue,
                 Setter = field.SetValue,
                 Values = values
@@ -158,7 +163,7 @@ namespace QuantTC.Experimental
         /// </summary>
         /// <param name="property"></param>
         /// <returns></returns>
-        public static Parameter Create(PropertyInfo property)
+        public static TypedParameter Create(PropertyInfo property)
         {
             var attr = property.GetCustomAttribute<ParameterAttribute>();
             if (!property.CanWrite || !property.CanRead) return null;
@@ -167,16 +172,16 @@ namespace QuantTC.Experimental
 
             var (lower, upper, factor) = Parse(attr, type);
 
-            IIteratorList values;
+            IReadOnlyList<object> values;
 
             if (type == typeof(int))
             {
-                values = new IntIteratorList(Convert.ToInt32(attr.Lower), Convert.ToInt32(attr.Upper),
+                values = new Int32ArithmeticProgression(Convert.ToInt32(attr.Lower), Convert.ToInt32(attr.Upper),
                     Convert.ToInt32(attr.Step));
             }
             else if (type == typeof(double))
             {
-                values = new DoubleIteratorList(Convert.ToDouble(attr.Lower), Convert.ToDouble(attr.Upper), Convert.ToDouble(attr.Step));
+                values = new DoubleArithmeticProgression(Convert.ToDouble(attr.Lower), Convert.ToDouble(attr.Upper), Convert.ToDouble(attr.Step));
             }
             else
             {
@@ -191,7 +196,7 @@ namespace QuantTC.Experimental
                 Upper = upper,
                 SizeFactor = factor
             };
-            return new Parameter
+            return new TypedParameter
             {
                 Name = name,
                 Type = type,

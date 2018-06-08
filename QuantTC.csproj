@@ -11,6 +11,11 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>bin\Debug\netstandard2.0\QuantTC.xml</DocumentationFile>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,6 +29,10 @@
 
   <ItemGroup>
     <None Remove=".git" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Experimental\Di\" />
   </ItemGroup>
 
 </Project>

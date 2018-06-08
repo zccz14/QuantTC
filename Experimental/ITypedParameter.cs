@@ -1,23 +1,16 @@
 ﻿using System;
+using QuantTC.Meta;
 
 namespace QuantTC.Experimental
 {
     /// <inheritdoc />
     /// <summary>
-    /// Meta Information of Parameter
+    /// Meta Information of TypedParameter
     /// </summary>
-    public interface IParameter : INamedConcept
+    [Obsolete]
+    public interface ITypedParameter : IParameter
     {
-        /// <summary>
-        /// Type of Parameter
-        /// </summary>
-        Type Type { get; }
         IDomain Domain { get; }
-        /// <summary>
-        /// Values in the domain
-        /// </summary>
-        IIteratorList Values { get; }
-
         int Priority { get; }
 
         object GetValue(object obj);
@@ -26,6 +19,6 @@ namespace QuantTC.Experimental
         /// <summary>
         /// Backwards Reference
         /// </summary>
-        IModel Model { get; }
+        ITypedModel TypedModel { get; }
     }
 }
